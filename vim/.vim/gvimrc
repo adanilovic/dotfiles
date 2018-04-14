@@ -1,0 +1,179 @@
+" Make external commands work through a pipe instead of a pseudo-tty
+"set noguipty
+
+" You can also specify a different font, overriding the default font
+"if has('gui_gtk2')
+"  set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
+"else
+"  set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
+"endif
+
+" If you want to run gvim with a dark background, try using a different
+" colorscheme or running 'gvim -reverse'.
+" http://www.cs.cmu.edu/~maverick/VimColorSchemeTest/ has examples and
+" downloads for the colorschemes on vim.org
+
+" Source a global configuration file if available
+if filereadable("/etc/vim/gvimrc.local")
+  source /etc/vim/gvimrc.local
+endif
+
+"My mods
+set nocompatible
+
+:set guifont=CourierNew\ 10
+:set guioptions -=m "removes the menubar
+:set guioptions -=T	"removes the toolbar
+":colorscheme eclipse
+:color codeschool
+:highlight Search gui=bold guifg=#5440f0 guibg=#f0c0ff
+":colorscheme lucius
+"LuciusDarkHighContrast
+
+":silent! e .
+"let g:netrw_liststyle=3
+":let g:netrw_chgwin=2 
+":NERDTree
+
+autocmd vimenter * TlistToggle
+let Tlist_Sort_Type = "name"
+
+autocmd vimenter * NERDTree
+:let NERDTreeQuitOnOpen = 0
+:let NERDTreeShowHidden=1
+
+"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+"let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+let g:ctrlp_clear_cache_on_exit = 0
+
+:set tags+=ftags
+
+:syntax on
+
+" allows tab completion on VIM commands
+set wildmenu
+set wildmode=list:longest,full
+
+"Display line numbers
+set number
+
+"starts highlighting the 1st word it finds
+set incsearch
+
+"when a tab is closed, close the buffer
+"set nohidden
+
+"set highlighting search on
+set hlsearch
+
+set ignorecase          " case insensitive searching
+set smartcase           " but become case sensitive if you type uppercase characters
+set nowrap
+:set scrolloff=4
+
+"make backspace behave as normal
+set backspace=indent,eol,start
+
+" size of a hard tabstop
+set tabstop=4
+set expandtab
+
+" size of an "indent"
+set shiftwidth=4
+
+set vb			" turn off bells completely by enabling visual bell
+set t_vb=		" and then clear the visual bell code
+
+"always show the mouse cursor
+set mousehide!
+
+"when creating a new vertical split, create it on the right
+set splitright
+
+let Tlist_Show_One_File = 1
+
+"open minibufexplorer
+"MBEOpen!
+
+"let minibufeplr show up as soon as a buffer is available
+let g:miniBUfExplBuffersNeeded=1
+
+"key mappings
+:nnoremap <A-x>d :Fp<space>
+:nnoremap <A-x>d<enter> :Fp<space><C-r><C-w><enter>
+:nnoremap <Esc> zR
+:nnoremap <C-]> <C-]>zz
+" :nnoremap <F5> <C-W><Left>
+nnoremap * *``
+
+"Ctrl+\ - Open the definition in a new tab
+"map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"Alt+] - Open the definition in a vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" F4: Buffer list
+map <silent> <F4> :BufExplorer<CR>
+
+" F5: Tag list
+imap <silent> <F5> :Tlist<CR>
+map <silent> <F5> :Tlist<CR>
+
+" F6: File list
+map <silent> <F6> :NERDTreeToggle<CR>
+
+" F7: Find word under in all files in current dir or subdirectories
+"map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e') <Bar> cw<CR>
+"map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e')<CR>
+map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*.tmpl **/*.py **/*.cc **/*.c **/*.cxx **/*.cpp **/*.h"<CR>
+
+" F12: Rebuild ctags database
+map <F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
+"ctags -R -f ./.git/tags .
+
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+
+function! MyFoldText()
+	return " "
+endfunction
+set foldtext=MyFoldText()
+
+
+"highlight FoldColumn  gui=bold    guifg=grey65     guibg=Grey90
+"highlight Folded      gui=italic  guifg=Black      guibg=Grey90
+"highlight LineNr      gui=NONE    guifg=grey60     guibg=Grey90
+:highlight Search gui=bold guifg=#5440f0 guibg=#f0c0ff
+
+"set fillchars-=fold:-
+set fillchars=""
+
+"echo $MYVIMRC
+"echo $MYGVIMRC
+"echo $VIM
+
+"autocmd VimEnter * <C-W>l
+":execute "normal \<C-W>l"
+autocmd VimEnter * wincmd l
+autocmd VimEnter * wincmd J
+autocmd VimEnter * wincmd k
+autocmd VimEnter * wincmd l
+autocmd VimEnter * wincmd L
+:normal <A-x>d echo "hi"
+"autocmd VimEnter * so ~/.vim/setmyfold.vim
+":execute "normal so ~/.vim/setmyfold.vim"
+"so ~/.vim/setmyfold.vim"
+
+"-------------------------
+"-------------------------
+"Project specific settings
+"-------------------------
+"-------------------------
+function! SetupEnvironment()
+  let l:path = expand('%:p')
+  if l:path =~ '/home/dman/usb_programming/libusbGamepad'
+	:se tags+=/usr/local/include/tags    
+  "elseif l:path =~ '/home/user/projects'
+  "else
+  endif
+endfunction
+autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
