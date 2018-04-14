@@ -162,18 +162,3 @@ autocmd VimEnter * wincmd L
 "autocmd VimEnter * so ~/.vim/setmyfold.vim
 ":execute "normal so ~/.vim/setmyfold.vim"
 "so ~/.vim/setmyfold.vim"
-
-"-------------------------
-"-------------------------
-"Project specific settings
-"-------------------------
-"-------------------------
-function! SetupEnvironment()
-  let l:path = expand('%:p')
-  if l:path =~ '/home/dman/usb_programming/libusbGamepad'
-	:se tags+=/usr/local/include/tags    
-  "elseif l:path =~ '/home/user/projects'
-  "else
-  endif
-endfunction
-autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
