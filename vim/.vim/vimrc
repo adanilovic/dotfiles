@@ -13,6 +13,11 @@ if empty(glob('~/.vim/plugged/taglist/plugin/taglist.vim'))
     silent !rm ~/.vim/plugged/taglist/taglist_46.zip
 endif
 
+if empty(glob('~/.vim/plugged/cscope_maps/cscope_maps.vim'))
+    silent !curl -fLo ~/.vim/plugged/cscope_maps/cscope_maps.vim --create-dirs
+        \ http://cscope.sourceforge.net/cscope_maps.vim
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Automatically install missing plugins on startup
@@ -28,6 +33,7 @@ Plug 'vim-scripts/L9'
 Plug 'dkprice/vim-easygrep'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/taglist'
+Plug '~/.vim/plugged/cscope_maps'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
