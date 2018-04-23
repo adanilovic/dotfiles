@@ -26,6 +26,7 @@ if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 endif
 
 Plug 'blockloop/vim-codeschool'
+Plug 'vim-scripts/eclipse.vim'
 Plug 'embear/vim-foldsearch'
 Plug 'scrooloose/nerdtree'
 Plug 'fholgado/minibufexpl.vim'
