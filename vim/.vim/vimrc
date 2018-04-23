@@ -6,7 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYGVIMRC
 endif
 
-if empty(glob('~/.vim/plugged/taglist/taglist.vim'))
+if empty(glob('~/.vim/plugged/taglist/plugin/taglist.vim'))
     silent !curl -fLo ~/.vim/plugged/taglist/taglist_46.zip --create-dirs
         \ https://vim.sourceforge.io/scripts/download_script.php?src_id=19574
     silent !unzip ~/.vim/plugged/taglist/taglist_46.zip -d ~/.vim/plugged/taglist/
