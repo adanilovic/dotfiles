@@ -1,37 +1,3 @@
-" Make external commands work through a pipe instead of a pseudo-tty
-"set noguipty
-
-" You can also specify a different font, overriding the default font
-"if has('gui_gtk2')
-"  set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
-"else
-"  set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
-"endif
-
-" If you want to run gvim with a dark background, try using a different
-" colorscheme or running 'gvim -reverse'.
-" http://www.cs.cmu.edu/~maverick/VimColorSchemeTest/ has examples and
-" downloads for the colorschemes on vim.org
-
-" Source a global configuration file if available
-if filereadable("/etc/vim/gvimrc.local")
-  source /etc/vim/gvimrc.local
-endif
-
-"vim plug configuration
-call plug#begin('~/.vim/plugged')
-Plug 'blockloop/vim-codeschool'
-Plug 'embear/vim-foldsearch'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'fholgado/minibufexpl.vim'
-Plug 'vim-scripts/L9'
-Plug 'dkprice/vim-easygrep'
-Plug 'ctrlpvim/ctrlp.vim'
-call plug#end()
-
-"My mods
-set nocompatible
-
 :set guifont=CourierNew\ 10
 :set guioptions -=m "removes the menubar
 :set guioptions -=T	"removes the toolbar
@@ -105,7 +71,6 @@ set splitright
 let Tlist_Show_One_File = 1
 
 "open minibufexplorer
-MBEOpen!
 map <Leader>mbe :MBEOpen<cr>
 map <Leader>mbc :MBEClose<cr>
 map <Leader>mbt :MBEToggle<cr>
