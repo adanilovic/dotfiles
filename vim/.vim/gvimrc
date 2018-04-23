@@ -18,6 +18,17 @@ if filereadable("/etc/vim/gvimrc.local")
   source /etc/vim/gvimrc.local
 endif
 
+"vim plug configuration
+call plug#begin('~/.vim/plugged')
+Plug 'blockloop/vim-codeschool'
+Plug 'embear/vim-foldsearch'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'fholgado/minibufexpl.vim'
+Plug 'vim-scripts/L9'
+Plug 'dkprice/vim-easygrep'
+Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+
 "My mods
 set nocompatible
 
@@ -94,7 +105,10 @@ set splitright
 let Tlist_Show_One_File = 1
 
 "open minibufexplorer
-"MBEOpen!
+MBEOpen!
+map <Leader>mbe :MBEOpen<cr>
+map <Leader>mbc :MBEClose<cr>
+map <Leader>mbt :MBEToggle<cr>
 
 "let minibufeplr show up as soon as a buffer is available
 let g:miniBUfExplBuffersNeeded=1
