@@ -12,8 +12,8 @@
 ":let g:netrw_chgwin=2 
 ":NERDTree
 
-autocmd vimenter * TlistToggle
-let Tlist_Sort_Type = "name"
+"autocmd vimenter * TlistToggle
+"let Tlist_Sort_Type = "name"
 
 autocmd vimenter * NERDTree
 :let NERDTreeQuitOnOpen = 0
@@ -92,7 +92,7 @@ nnoremap * *``
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " F4: Buffer list
-map <silent> <F4> :BufExplorer<CR>
+map <silent> <F4> :MBEToggle<CR>
 
 " F5: Tag list
 imap <silent> <F5> :Tlist<CR>
@@ -109,8 +109,6 @@ map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*.tmpl **/*.py **/*.c
 " F12: Rebuild ctags database
 map <F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
 "ctags -R -f ./.git/tags .
-
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
 function! MyFoldText()
 	return " "
@@ -137,7 +135,6 @@ autocmd VimEnter * wincmd J
 autocmd VimEnter * wincmd k
 autocmd VimEnter * wincmd l
 autocmd VimEnter * wincmd L
-:normal <A-x>d echo "hi"
 "autocmd VimEnter * so ~/.vim/setmyfold.vim
 ":execute "normal so ~/.vim/setmyfold.vim"
 "so ~/.vim/setmyfold.vim"
