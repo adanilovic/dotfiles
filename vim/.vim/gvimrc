@@ -14,6 +14,7 @@
 
 "autocmd vimenter * TlistToggle
 "let Tlist_Sort_Type = "name"
+"let Tlist_Show_One_File = 1
 
 autocmd vimenter * NERDTree
 :let NERDTreeQuitOnOpen = 0
@@ -68,13 +69,6 @@ set mousehide!
 "when creating a new vertical split, create it on the right
 set splitright
 
-let Tlist_Show_One_File = 1
-
-"open minibufexplorer
-map <Leader>mbe :MBEOpen<cr>
-map <Leader>mbc :MBEClose<cr>
-map <Leader>mbt :MBEToggle<cr>
-
 "let minibufeplr show up as soon as a buffer is available
 let g:miniBUfExplBuffersNeeded=1
 
@@ -106,15 +100,17 @@ map <silent> <F6> :NERDTreeToggle<CR>
 "map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e')<CR>
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*.tmpl **/*.py **/*.cc **/*.c **/*.cxx **/*.cpp **/*.h"<CR>
 
-" F12: Rebuild ctags database
-map <F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
+" F8: Rebuild ctags database
+map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
 "ctags -R -f ./.git/tags .
+
+" F9: Build cscope database
+map <F9> :!cscope -R .<CR>
 
 function! MyFoldText()
 	return " "
 endfunction
 set foldtext=MyFoldText()
-
 
 "highlight FoldColumn  gui=bold    guifg=grey65     guibg=Grey90
 "highlight Folded      gui=italic  guifg=Black      guibg=Grey90
@@ -124,17 +120,13 @@ set foldtext=MyFoldText()
 "set fillchars-=fold:-
 set fillchars=""
 
-"echo $MYVIMRC
-"echo $MYGVIMRC
-"echo $VIM
-
 "autocmd VimEnter * <C-W>l
 ":execute "normal \<C-W>l"
-autocmd VimEnter * wincmd l
-autocmd VimEnter * wincmd J
-autocmd VimEnter * wincmd k
-autocmd VimEnter * wincmd l
-autocmd VimEnter * wincmd L
+"autocmd VimEnter * wincmd l
+"autocmd VimEnter * wincmd J
+"autocmd VimEnter * wincmd k
+"autocmd VimEnter * wincmd l
+"autocmd VimEnter * wincmd L
 "autocmd VimEnter * so ~/.vim/setmyfold.vim
 ":execute "normal so ~/.vim/setmyfold.vim"
 "so ~/.vim/setmyfold.vim"

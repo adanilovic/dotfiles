@@ -27,7 +27,7 @@ endif
 
 Plug 'blockloop/vim-codeschool'
 Plug 'embear/vim-foldsearch'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-scripts/L9'
 Plug 'dkprice/vim-easygrep'
