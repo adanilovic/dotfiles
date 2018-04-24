@@ -25,8 +25,10 @@ if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
   autocmd VimEnter * PlugInstall | q
 endif
 
+"colorschemes
 Plug 'blockloop/vim-codeschool'
 Plug 'vim-scripts/eclipse.vim'
+Plug 'jnurmine/Zenburn'
 Plug 'embear/vim-foldsearch'
 Plug 'scrooloose/nerdtree'
 Plug 'fholgado/minibufexpl.vim'
@@ -35,6 +37,12 @@ Plug 'dkprice/vim-easygrep'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/taglist'
 Plug '~/.vim/plugged/cscope_maps'
+Plug 'vim-syntastic/syntastic'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'elzr/vim-json'
+Plug 'tpope/vim-fugitive'
+Plug 'jonathanfilip/vim-lucius'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
