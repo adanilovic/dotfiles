@@ -23,7 +23,7 @@ let g:lightline = {
 ":NERDTree
 
 "The following line will automatically start tlist when vim is started
-"autocmd vimenter * TlistToggle
+autocmd vimenter * TlistToggle
 let Tlist_Sort_Type = "name"
 let Tlist_Show_One_File = 1
 
@@ -32,7 +32,7 @@ autocmd vimenter * NERDTree
 :let NERDTreeQuitOnOpen = 0
 :let NERDTreeShowHidden=1
 "The following line switches the cursor to be in the main window
-autocmd VimEnter * wincmd p
+"autocmd VimEnter * wincmd p
 
 "let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 "let g:ctrlp_max_files=0
@@ -100,6 +100,15 @@ nnoremap * *``
 "Alt+] - Open the definition in a vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+:map <Home> ^
+:imap <Home> <Esc>I
+
+" F2: Adjust windows
+map <F2> 200<C-W>\|
+
+" F3: Run python script in current buffer
+map <F3> :!clear;python %<CR>
+
 " F4: Buffer list
 map <silent> <F4> :MBEToggle<CR>
 
@@ -122,6 +131,10 @@ map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
 " F9: Build cscope database
 map <F9> :!cscope -R .<CR>
 
+" Open vimrc and gvimrc
+map <F11> :e ~/.vim/gvimrc<CR>
+map <F12> :e ~/.vim/vimrc<CR>
+
 function! MyFoldText()
 	return " "
 endfunction
@@ -136,12 +149,12 @@ set foldtext=MyFoldText()
 set fillchars=""
 
 "autocmd VimEnter * <C-W>l
-":execute "normal \<C-W>l"
-"autocmd VimEnter * wincmd l
-"autocmd VimEnter * wincmd J
-"autocmd VimEnter * wincmd k
-"autocmd VimEnter * wincmd l
-"autocmd VimEnter * wincmd L
+autocmd VimEnter * wincmd l
+autocmd VimEnter * wincmd J
+autocmd VimEnter * wincmd k
+autocmd VimEnter * wincmd l
+autocmd VimEnter * wincmd L
+autocmd VimEnter * :execute "normal 80\<C-W>\|"
 "autocmd VimEnter * so ~/.vim/setmyfold.vim
 ":execute "normal so ~/.vim/setmyfold.vim"
 "so ~/.vim/setmyfold.vim"
@@ -166,3 +179,7 @@ let g:EasyGrepFileAssociationsInExplorer=1
 let g:EasyGrepRecursive=1
 let g:EasyGrepMode=3
 let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc"
+
+"tags=./tags
+"tags+=$SDK_SRC_PLUS_HEADERS/tags
+"tags+=$THIRD_PARTY_SDK/tags

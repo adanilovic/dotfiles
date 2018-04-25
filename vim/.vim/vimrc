@@ -43,6 +43,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-fugitive'
 Plug 'jonathanfilip/vim-lucius'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
