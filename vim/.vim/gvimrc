@@ -1,10 +1,13 @@
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'absolutepath', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste', 'gutentags' ],
+      \             [ 'gitbranch', 'readonly', 'modified', 'absolutepath'] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component': {
+      \   'gutentags': '%{gutentags#statusline("[Generating...]")}',
       \ },
       \ }
 
@@ -13,7 +16,14 @@ let g:lightline = {
 :set guioptions -=T	"removes the toolbar
 ":colorscheme eclipse
 ":color codeschool
-:color zenburn
+":color zenburn
+":color carbonized-dark
+":color materialbox
+":color PaperColor
+:color parsec
+":color distinguished
+":color termschool
+":color ang:r
 ":colorscheme lucius
 "LuciusDarkHighContrast
 
@@ -60,8 +70,11 @@ set noshowmode
 "set highlighting search on
 set hlsearch
 
-set ignorecase          " case insensitive searching
-set smartcase           " but become case sensitive if you type uppercase characters
+"case insensitive searching
+set ignorecase
+
+"but become case sensitive if you type uppercase characters
+set smartcase
 set nowrap
 :set scrolloff=4
 
@@ -159,10 +172,10 @@ autocmd VimEnter * :execute "normal 80\<C-W>\|"
 ":execute "normal so ~/.vim/setmyfold.vim"
 "so ~/.vim/setmyfold.vim"
 
-" Remove trailing trailing white space on file save
+"Remove trailing trailing white space on file save
 autocmd FileType c,cpp,h,hpp,java,php,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
-" syntastic settings
+"syntastic plugin settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -172,14 +185,27 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+"easygrep plugin settings
 let g:EasyGrepCommand=1
 "let g:EasyGrepWindowPosition=botleft
 let g:EasyGrepJumpToMatch=0
 let g:EasyGrepFileAssociationsInExplorer=1
 let g:EasyGrepRecursive=1
 let g:EasyGrepMode=3
-let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc"
+let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py"
 
-"tags=./tags
-"tags+=$SDK_SRC_PLUS_HEADERS/tags
-"tags+=$THIRD_PARTY_SDK/tags
+"sidemenu plugin settings
+nmap <Leader>l <Plug>(sidemenu)
+xmap <Leader>l <Plug>(sidemenu-visual)
+
+"choosewin plugin settings
+nmap - <Plug>(choosewin)
+
+"buffergator plugin settings
+let g:buffergator_viewport_split_policy = "B"
+
+"vim plug plugin settings
+let g:plug_window = 'vertical botright new'
+
+"gutentags plugin settings
+let g:gutentags_modules = ['ctags', 'cscope']

@@ -28,7 +28,11 @@ endif
 "colorschemes
 Plug 'blockloop/vim-codeschool'
 Plug 'vim-scripts/eclipse.vim'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'jnurmine/Zenburn'
+Plug 'romainl/Apprentice'
+Plug 'reedes/vim-colors-pencil'
+Plug 'Lokaltog/vim-distinguished'
 Plug 'embear/vim-foldsearch'
 Plug 'scrooloose/nerdtree'
 Plug 'fholgado/minibufexpl.vim'
@@ -42,8 +46,21 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-fugitive'
+Plug 'kablamo/vim-git-log'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'nanotech/jellybeans.vim'
+Plug 'hari-rangarajan/CCTree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'xolox/vim-colorscheme-switcher'
+Plug 'xolox/vim-misc'
+Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
+Plug 'rafi/vim-sidemenu'
+Plug 'vimwiki/vimwiki'
+Plug 't9md/vim-choosewin'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
