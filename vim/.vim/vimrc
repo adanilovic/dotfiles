@@ -54,13 +54,18 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'
 Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
-Plug 'rafi/vim-sidemenu'
+Plug 'rafi/vim-sidemenu'    "<Leader>l
 Plug 'vimwiki/vimwiki'
 Plug 't9md/vim-choosewin'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'mbbill/undotree'
+Plug 'gregsexton/gitv'
+"Plug 'zhaocai/GoldenView.Vim'
+Plug 'simeji/winresizer'    "<C-E>, followed by hjkl
+Plug 'junegunn/fzf'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim

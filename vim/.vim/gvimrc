@@ -135,7 +135,8 @@ map <silent> <F6> :NERDTreeToggle<CR>
 " F7: Find word under in all files in current dir or subdirectories
 "map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e') <Bar> cw<CR>
 "map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e')<CR>
-map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*.tmpl **/*.py **/*.cc **/*.c **/*.cxx **/*.cpp **/*.h"<CR>
+"map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*.tmpl **/*.py **/*.cc **/*.c **/*.cxx **/*.cpp **/*.h"<CR>
+nnoremap <F7> :UndotreeToggle<cr>
 
 " F8: Rebuild ctags database
 map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
@@ -209,3 +210,7 @@ let g:plug_window = 'vertical botright new'
 
 "gutentags plugin settings
 let g:gutentags_modules = ['ctags', 'cscope']
+
+"undotree plugin settings
+let g:undotree_CustomUndotreeCmd = 'botright vertical 32 new'
+let g:undotree_CustomDiffpanelCmd= 'belowright 12 new'
