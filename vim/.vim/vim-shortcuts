@@ -1,0 +1,209 @@
+"Vim key map cheatsheet
+https://vim.rtorr.com/
+
+"to open a file explorer
+:e .
+
+"Perform selective display
+<A-x>d
+
+"Perform selective display of word under cursor
+<A-x>d<enter>
+
+"Open all folds
+<leader>e
+
+"Save all unsaved files
+<leader>ww
+
+"Open bufexplorer
+<leader>be
+
+"Adjust current windows
+F2
+
+"Run python script in current buffer
+F3
+
+"Buffer list
+F4
+
+"Tag list
+F5
+
+"Toggle NERDTree
+F6
+
+"Toggle nerdtree
+F7
+
+"Rebuild ctags database
+F8
+
+"Build cscope database
+F9
+
+"Open vimrc
+F11
+
+"Source vimrc
+F12
+
+map <F11> :e ~/.vim/gvimrc<CR>
+map <F12> :e ~/.vim/vimrc<CR>
+
+"Comment highlighted selection
+<leader>cc
+
+"Toggle comments in highlighted selection
+<leader>c<space>
+
+"Show the contents of the registers
+" <while in normal mode>
+
+"Swap windows
+<leader>ws to mark a window
+navigate to window you want to swap with
+<leader>ws to swap
+
+"Choose which window to jump to
+- <while in normal mode>
+
+"Increase font size
+<C-x> <C-+>
+
+"Go to tag
+<C-]>
+
+"List all tags
+g<C-]>
+
+"Open the definition in a horizontal split
+<ctrl-w><ctrl-]>
+
+"Open the definition in a vertical split
+<alt+]>
+
+"Open the definition in a new tab
+<ctrl-\>
+
+"Go back one tag level
+<C-t>
+
+"to get the autocompletion to work, type the following:
+myclass myinstance;
+myinstance.<C-x><C-o>
+
+"To tell vim to try to autocomplete from tag file
+<C-n>
+
+"Go back to previous cursor position
+<C-o>
+
+"Center screen on cursor
+zz
+
+"to swap splits
+<ctrl> r
+
+"to rearrange splits
+<ctrl-w> H|J|K|L
+
+"Max out the height of the current split
+<ctrl-w>_
+
+"Max out the width of the current split
+<ctrl-w>|
+
+"Normalize all split sizes, which is very handy when resizing terminal
+<ctrl-w>=
+
+"Perform fuzzy file find
+<ctrl>p
+
+"turn all folding off
+zi
+
+"?
+1 Ctrl+G
+:!ls %:p
+
+"Go to the first non-whitespace character on the line
+^
+
+//search for the word under the cursor
+*
+
+//search backwards for word under cursoe
+#
+
+//go to local declaration of variable
+gd
+
+//source current file, the % tells vim to source the current file
+:so %
+
+"opens a list of all previous commands, <Ctrl> C to quit
+q:
+
+"opens a list of all previous searches
+q/	
+
+"Registers
+"in insert mode pasts the contents of a register
+<C-r>   
+
+" means do something to the next register
+
+"+ is one of vim's global register
+
+"0 is the yank register
+
+"1-9 are the history/delete registers
+"0 is the yank register
+"a-z are named registers
+"A-Z same as "a-z" but append
+
+"/ is the search register
+"- is the small delete
+"= is the expression register, e.g. <insert mode><C-r>=1+2
+"_ is the black hole register
+
+": is the last : command
+". last inserted text
+"% filename of the current buffer
+"# is the filename of the alternate file
+
+"Vim highlighting and searching
+Go to search mode i.e. type '/' and then type \v followed by the words you want to search separated by '|' (pipe).
+Ex: /\vword1|word2|word3
+Go to search mode and type the words you want to search separated by '\|'.
+Ex: /word1\|word2\|word3
+Basically the first way puts you in the regular expression mode so that you do not need to put any extra back slashes before every pipe or other delimiters used for searching.
+
+"CTRLP
+"Once CtrlP is open:
+Press <F5> to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
+Press <c-f> and <c-b> to cycle between modes.
+Press <c-d> to switch to filename only search instead of full path.
+Press <c-r> to switch to regexp mode.
+Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
+Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+Use <c-y> to create a new file and its parent directories.
+Use <c-z> to mark/unmark multiple files and <c-o> to open them.
+Run :help ctrlp-mappings or submit ? in CtrlP for more mapping help.
+
+"Commands
+:tab sball
+:echo $VIM
+:echo $HOME
+:echo $VIMRUNTIME
+:so $MYVIMRC	    //used to source the .vimrc file
+: e <ctrl>D		    //this lists the files in the current directory, type a name and press enter to open
+:helptags <dir that contains the doc>
+:cs find f sched.c
+:b <bufferName>	    //switch to a buffer
+:help key-notation	//shows the key notation
+:mksession	        //saves a vim layout
+:reg                //will list all registers
