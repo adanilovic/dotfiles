@@ -55,17 +55,278 @@ Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'
 Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
 Plug 'rafi/vim-sidemenu'    "<Leader>l
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 Plug 't9md/vim-choosewin'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
 Plug 'gregsexton/gitv'
-"Plug 'zhaocai/GoldenView.Vim'
 Plug 'simeji/winresizer'    "<C-E>, followed by hjkl
 Plug 'junegunn/fzf'
+Plug 'wincent/terminus'
+Plug 'KevinGoodsell/vim-csexact'
+Plug 'mileszs/ack.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'wesQ3/vim-windowswap'
 call plug#end()
 
 source $VIMRUNTIME/mswin.vim
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste', 'gutentags' ],
+      \             [ 'gitbranch', 'readonly', 'modified', 'absolutepath'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component': {
+      \   'gutentags': '%{gutentags#statusline("[Generating...]")}',
+      \ },
+      \ }
+
+"Gui, font, and colorscheme settings
+":set guifont=CourierNew\ 10
+:set guioptions -=m "removes the menubar
+:set guioptions -=T	"removes the toolbar
+":set guioptions-=r  "remove right-hand scroll bar
+":set guioptions-=L  "remove left-hand scroll bar
+:colorscheme eclipse
+":color codeschool
+":color zenburn
+":color carbonized-dark
+":color materialbox
+":color PaperColor
+":color parsec
+":color distinguished
+":color termschool
+":color ang:r
+":colorscheme lucius
+"LuciusDarkHighContrast
+
+"Start tlist when vim is started
+autocmd vimenter * TlistToggle
+let Tlist_Sort_Type = "name"
+let Tlist_Show_One_File = 1
+
+"Start NERDTree when vim is started
+autocmd vimenter * NERDTree
+:let NERDTreeQuitOnOpen = 0
+:let NERDTreeShowHidden=1
+
+"Switch the cursor to be in the main window
+"autocmd VimEnter * wincmd p
+
+"highlight FoldColumn  gui=bold    guifg=grey65     guibg=Grey90
+"highlight Folded      gui=italic  guifg=Black      guibg=Grey90
+"highlight LineNr      gui=NONE    guifg=grey60     guibg=Grey90
+:highlight Search gui=bold guifg=#5440f0 guibg=#f0c0ff
+
+"-------------------------------------------------
+"------------------VIM Settings-------------------
+"-------------------------------------------------
+
+"Enable vim syntax coloring
+:syntax on
+
+"Allow tab completion on VIM commands
+set wildmenu
+set wildmode=list:longest,full
+
+"Display line numbers
+set number
+
+"Start highlighting the 1st word it finds
+set incsearch
+
+"disable -- Insert -- status line
+set noshowmode
+
+"when a tab is closed, close the buffer
+"set nohidden
+
+"set highlighting search on
+set hlsearch
+
+"case insensitive searching
+set ignorecase
+
+"but become case sensitive if you type uppercase characters
+set smartcase
+set nowrap
+:set scrolloff=4
+
+"make backspace behave as normal
+set backspace=indent,eol,start
+
+" size of a hard tabstop
+set tabstop=4
+set expandtab
+
+" size of an "indent"
+set shiftwidth=4
+
+set vb			" turn off bells completely by enabling visual bell
+set t_vb=		" and then clear the visual bell code
+
+"always show the mouse cursor
+set mousehide!
+set mouse=n
+set ttymouse=xterm2
+
+"when creating a new vertical split, create it on the right
+set splitright
+
+"make vim as responsive as gvim
+set ttimeout ttimeoutlen=50
+
+"-------------------------------------------------
+"------------------Key Mappings-------------------
+"-------------------------------------------------
+
+:nnoremap <A-x>d :Fp<space>
+:nnoremap <A-x>d<enter> :Fp<space><C-r><C-w><enter>
+:nnoremap <Leader>e zR
+:nnoremap <C-]> <C-]>zz
+:nnoremap <F5> <C-W><Left>
+nnoremap * *``
+
+"Save all unsaved files
+nmap <leader>ww :wa<cr>
+
+"The following key maps allow <A-x>d :Fp to work in vim
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+"Alt+] - Open the definition in a vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+"Make home key jump to first character on line
+:map <Home> ^
+:imap <Home> <Esc>I
+
+" F2: Adjust current windows
+map <F2> 200<C-W>\|
+
+" F3: Run python script in current buffer
+map <F3> :!clear;python %<CR>
+
+" F4: Buffer list
+map <silent> <F4> :MBEToggle<CR>
+
+" F5: Tag list
+imap <silent> <F5> :Tlist<CR>
+map <silent> <F5> :Tlist<CR>
+
+" F6: Toggle NERDTree
+map <silent> <F6> :NERDTreeToggle<CR>
+
+" F7: Toggle nerdtree
+nnoremap <F7> :UndotreeToggle<cr>
+
+" F8: Rebuild ctags database
+map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
+"ctags -R -f ./.git/tags .
+
+" F9: Build cscope database
+map <F9> :!cscope -b -q -k -R .<CR>
+
+"F11: Open vimrc
+map <F11> :e ~/.vim/vimrc<CR>
+
+"F12: Source vimrc
+map <F12> :source ~/.vim/vimrc<CR>
+
+"autocmd VimEnter * <C-W>l
+autocmd VimEnter * wincmd l
+autocmd VimEnter * wincmd J
+autocmd VimEnter * wincmd k
+autocmd VimEnter * wincmd l
+autocmd VimEnter * wincmd L
+autocmd VimEnter * :execute "normal 80\<C-W>\|"
+"autocmd VimEnter * so ~/.vim/setmyfold.vim
+":execute "normal so ~/.vim/setmyfold.vim"
+"so ~/.vim/setmyfold.vim"
+
+"Remove trailing trailing white space on file save
+autocmd FileType c,cpp,h,hpp,java,php,python autocmd BufWritePre <buffer> %s/\s\+$//e
+
+"-------------------------------------------------
+"-----------------Plugin settings-----------------
+"-------------------------------------------------
+"netrw settings
+let g:netrw_banner=0
+let g:netrw_browse_split=4  "open in prior window
+let g:netrw_altv=1          "open pslits to the right
+let g:netrw_liststyle=3     "tree view
+
+"foldsearch plugin settings
+function! MyFoldText()
+    return " "
+endfunction
+set foldtext=MyFoldText()
+
+"set fillchars-=fold:-
+set fillchars=""
+
+let g:foldsearch_highlight=1
+
+"ctrlp plugin settings
+let g:ctrlp_max_depth=40
+let g:ctrlp_clear_cache_on_exit = 0
+
+"let minibufeplr show up as soon as a buffer is available
+let g:miniBUfExplBuffersNeeded=1
+
+"syntastic plugin settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+"easygrep plugin settings
+let g:EasyGrepCommand=1
+"let g:EasyGrepWindowPosition=botleft
+let g:EasyGrepJumpToMatch=0
+let g:EasyGrepFileAssociationsInExplorer=1
+let g:EasyGrepRecursive=1
+let g:EasyGrepMode=3
+let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py"
+let g:EasyGrepSearchCurrentBufferDir=0
+let g:EasyGrepAllOptionsInExplorer=1
+let g:EasyGrepWindow=1
+"Include hidden files to fix bug with ack, shouldn't matter since file
+"extenstions are listed above
+let g:EasyGrepHidden=1
+let g:EasyGrepFilesToExclude="build"
+
+"sidemenu plugin settings
+nmap <Leader>l <Plug>(sidemenu)
+xmap <Leader>l <Plug>(sidemenu-visual)
+
+"choosewin plugin settings
+nmap - <Plug>(choosewin)
+
+"vim plug plugin settings
+let g:plug_window = 'vertical botright new'
+
+"gutentags plugin settings
+let g:gutentags_modules = ['ctags']
+
+"undotree plugin settings
+let g:undotree_CustomUndotreeCmd = 'botright vertical 32 new'
+let g:undotree_CustomDiffpanelCmd= 'belowright 12 new'
+
+"windowswap plugin settings
+let g:windowswap_map_keys=0
+nnoremap <silent> <leader>ws :call WindowSwap#EasyWindowSwap()<CR>

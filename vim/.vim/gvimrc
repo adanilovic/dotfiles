@@ -1,216 +1,216 @@
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'gutentags' ],
-      \             [ 'gitbranch', 'readonly', 'modified', 'absolutepath'] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ 'component': {
-      \   'gutentags': '%{gutentags#statusline("[Generating...]")}',
-      \ },
-      \ }
+"let g:lightline = {
+      "\ 'active': {
+      "\   'left': [ [ 'mode', 'paste', 'gutentags' ],
+      "\             [ 'gitbranch', 'readonly', 'modified', 'absolutepath'] ]
+      "\ },
+      "\ 'component_function': {
+      "\   'gitbranch': 'fugitive#head'
+      "\ },
+      "\ 'component': {
+      "\   'gutentags': '%{gutentags#statusline("[Generating...]")}',
+      "\ },
+      "\ }
 
-:set guifont=CourierNew\ 10
-:set guioptions -=m "removes the menubar
-:set guioptions -=T	"removes the toolbar
-":colorscheme eclipse
-":color codeschool
-":color zenburn
-":color carbonized-dark
-":color materialbox
-":color PaperColor
-:color parsec
-":color distinguished
-":color termschool
-":color ang:r
-":colorscheme lucius
-"LuciusDarkHighContrast
+":set guifont=CourierNew\ 10
+":set guioptions -=m "removes the menubar
+":set guioptions -=T	"removes the toolbar
+"":colorscheme eclipse
+"":color codeschool
+"":color zenburn
+"":color carbonized-dark
+"":color materialbox
+"":color PaperColor
+":color parsec
+"":color distinguished
+"":color termschool
+"":color ang:r
+"":colorscheme lucius
+""LuciusDarkHighContrast
 
-":silent! e .
-"let g:netrw_liststyle=3
-":let g:netrw_chgwin=2 
-":NERDTree
+"":silent! e .
+""let g:netrw_liststyle=3
+"":let g:netrw_chgwin=2 
+"":NERDTree
 
-"The following line will automatically start tlist when vim is started
-autocmd vimenter * TlistToggle
-let Tlist_Sort_Type = "name"
-let Tlist_Show_One_File = 1
+""The following line will automatically start tlist when vim is started
+"autocmd vimenter * TlistToggle
+"let Tlist_Sort_Type = "name"
+"let Tlist_Show_One_File = 1
 
-"The following line will automatically start NERDTree when vim is started
-autocmd vimenter * NERDTree
-:let NERDTreeQuitOnOpen = 0
-:let NERDTreeShowHidden=1
-"The following line switches the cursor to be in the main window
-"autocmd VimEnter * wincmd p
+""The following line will automatically start NERDTree when vim is started
+"autocmd vimenter * NERDTree
+":let NERDTreeQuitOnOpen = 0
+":let NERDTreeShowHidden=1
+""The following line switches the cursor to be in the main window
+""autocmd VimEnter * wincmd p
 
-"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-"let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-let g:ctrlp_clear_cache_on_exit = 0
+""let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+""let g:ctrlp_max_files=0
+"let g:ctrlp_max_depth=40
+"let g:ctrlp_clear_cache_on_exit = 0
 
-:syntax on
+":syntax on
 
-" allows tab completion on VIM commands
-set wildmenu
-set wildmode=list:longest,full
+"" allows tab completion on VIM commands
+"set wildmenu
+"set wildmode=list:longest,full
 
-"Display line numbers
-set number
+""Display line numbers
+"set number
 
-"starts highlighting the 1st word it finds
-set incsearch
+""starts highlighting the 1st word it finds
+"set incsearch
 
-"disable -- Insert -- status line
-set noshowmode
+""disable -- Insert -- status line
+"set noshowmode
 
-"when a tab is closed, close the buffer
-"set nohidden
+""when a tab is closed, close the buffer
+""set nohidden
 
-"set highlighting search on
-set hlsearch
+""set highlighting search on
+"set hlsearch
 
-"case insensitive searching
-set ignorecase
+""case insensitive searching
+"set ignorecase
 
-"but become case sensitive if you type uppercase characters
-set smartcase
-set nowrap
-:set scrolloff=4
+""but become case sensitive if you type uppercase characters
+"set smartcase
+"set nowrap
+":set scrolloff=4
 
-"make backspace behave as normal
-set backspace=indent,eol,start
+""make backspace behave as normal
+"set backspace=indent,eol,start
 
-" size of a hard tabstop
-set tabstop=4
-set expandtab
+"" size of a hard tabstop
+"set tabstop=4
+"set expandtab
 
-" size of an "indent"
-set shiftwidth=4
+"" size of an "indent"
+"set shiftwidth=4
 
-set vb			" turn off bells completely by enabling visual bell
-set t_vb=		" and then clear the visual bell code
+"set vb			" turn off bells completely by enabling visual bell
+"set t_vb=		" and then clear the visual bell code
 
-"always show the mouse cursor
-set mousehide!
+""always show the mouse cursor
+"set mousehide!
 
-"when creating a new vertical split, create it on the right
-set splitright
+""when creating a new vertical split, create it on the right
+"set splitright
 
-"let minibufeplr show up as soon as a buffer is available
-let g:miniBUfExplBuffersNeeded=1
+""let minibufeplr show up as soon as a buffer is available
+"let g:miniBUfExplBuffersNeeded=1
 
-"key mappings
-:nnoremap <A-x>d :Fp<space>
-:nnoremap <A-x>d<enter> :Fp<space><C-r><C-w><enter>
-:nnoremap <Esc> zR
-:nnoremap <C-]> <C-]>zz
-" :nnoremap <F5> <C-W><Left>
-nnoremap * *``
+""key mappings
+":nnoremap <A-x>d :Fp<space>
+":nnoremap <A-x>d<enter> :Fp<space><C-r><C-w><enter>
+":nnoremap <Esc> zR
+":nnoremap <C-]> <C-]>zz
+"" :nnoremap <F5> <C-W><Left>
+"nnoremap * *``
 
-"Ctrl+\ - Open the definition in a new tab
-"map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-"Alt+] - Open the definition in a vertical split
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+""Ctrl+\ - Open the definition in a new tab
+""map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+""Alt+] - Open the definition in a vertical split
+"map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-:map <Home> ^
-:imap <Home> <Esc>I
+":map <Home> ^
+":imap <Home> <Esc>I
 
-" F2: Adjust windows
-map <F2> 200<C-W>\|
+"" F2: Adjust windows
+"map <F2> 200<C-W>\|
 
-" F3: Run python script in current buffer
-map <F3> :!clear;python %<CR>
+"" F3: Run python script in current buffer
+"map <F3> :!clear;python %<CR>
 
-" F4: Buffer list
-map <silent> <F4> :MBEToggle<CR>
+"" F4: Buffer list
+"map <silent> <F4> :MBEToggle<CR>
 
-" F5: Tag list
-imap <silent> <F5> :Tlist<CR>
-map <silent> <F5> :Tlist<CR>
+"" F5: Tag list
+"imap <silent> <F5> :Tlist<CR>
+"map <silent> <F5> :Tlist<CR>
 
-" F6: File list
-map <silent> <F6> :NERDTreeToggle<CR>
+"" F6: File list
+"map <silent> <F6> :NERDTreeToggle<CR>
 
-" F7: Find word under in all files in current dir or subdirectories
-"map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e') <Bar> cw<CR>
-"map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e')<CR>
-"map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*.tmpl **/*.py **/*.cc **/*.c **/*.cxx **/*.cpp **/*.h"<CR>
-nnoremap <F7> :UndotreeToggle<cr>
+"" F7: Find word under in all files in current dir or subdirectories
+""map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e') <Bar> cw<CR>
+""map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*." . expand('%:e')<CR>
+""map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **/*.tmpl **/*.py **/*.cc **/*.c **/*.cxx **/*.cpp **/*.h"<CR>
+"nnoremap <F7> :UndotreeToggle<cr>
 
-" F8: Rebuild ctags database
-map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
-"ctags -R -f ./.git/tags .
+"" F8: Rebuild ctags database
+"map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
+""ctags -R -f ./.git/tags .
 
-" F9: Build cscope database
-map <F9> :!cscope -R .<CR>
+"" F9: Build cscope database
+"map <F9> :!cscope -R .<CR>
 
-" Open vimrc and gvimrc
-map <F11> :e ~/.vim/gvimrc<CR>
-map <F12> :e ~/.vim/vimrc<CR>
+"" Open vimrc and gvimrc
+"map <F11> :e ~/.vim/gvimrc<CR>
+"map <F12> :e ~/.vim/vimrc<CR>
 
-function! MyFoldText()
-	return " "
-endfunction
-set foldtext=MyFoldText()
+"function! MyFoldText()
+	"return " "
+"endfunction
+"set foldtext=MyFoldText()
 
-"highlight FoldColumn  gui=bold    guifg=grey65     guibg=Grey90
-"highlight Folded      gui=italic  guifg=Black      guibg=Grey90
-"highlight LineNr      gui=NONE    guifg=grey60     guibg=Grey90
-:highlight Search gui=bold guifg=#5440f0 guibg=#f0c0ff
+""highlight FoldColumn  gui=bold    guifg=grey65     guibg=Grey90
+""highlight Folded      gui=italic  guifg=Black      guibg=Grey90
+""highlight LineNr      gui=NONE    guifg=grey60     guibg=Grey90
+":highlight Search gui=bold guifg=#5440f0 guibg=#f0c0ff
 
-"set fillchars-=fold:-
-set fillchars=""
+""set fillchars-=fold:-
+"set fillchars=""
 
-"autocmd VimEnter * <C-W>l
-autocmd VimEnter * wincmd l
-autocmd VimEnter * wincmd J
-autocmd VimEnter * wincmd k
-autocmd VimEnter * wincmd l
-autocmd VimEnter * wincmd L
-autocmd VimEnter * :execute "normal 80\<C-W>\|"
-"autocmd VimEnter * so ~/.vim/setmyfold.vim
-":execute "normal so ~/.vim/setmyfold.vim"
-"so ~/.vim/setmyfold.vim"
+""autocmd VimEnter * <C-W>l
+"autocmd VimEnter * wincmd l
+"autocmd VimEnter * wincmd J
+"autocmd VimEnter * wincmd k
+"autocmd VimEnter * wincmd l
+"autocmd VimEnter * wincmd L
+"autocmd VimEnter * :execute "normal 80\<C-W>\|"
+""autocmd VimEnter * so ~/.vim/setmyfold.vim
+"":execute "normal so ~/.vim/setmyfold.vim"
+""so ~/.vim/setmyfold.vim"
 
-"Remove trailing trailing white space on file save
-autocmd FileType c,cpp,h,hpp,java,php,python autocmd BufWritePre <buffer> %s/\s\+$//e
+""Remove trailing trailing white space on file save
+"autocmd FileType c,cpp,h,hpp,java,php,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
-"syntastic plugin settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+""syntastic plugin settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
-"easygrep plugin settings
-let g:EasyGrepCommand=1
-"let g:EasyGrepWindowPosition=botleft
-let g:EasyGrepJumpToMatch=0
-let g:EasyGrepFileAssociationsInExplorer=1
-let g:EasyGrepRecursive=1
-let g:EasyGrepMode=3
-let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py"
+""easygrep plugin settings
+"let g:EasyGrepCommand=1
+""let g:EasyGrepWindowPosition=botleft
+"let g:EasyGrepJumpToMatch=0
+"let g:EasyGrepFileAssociationsInExplorer=1
+"let g:EasyGrepRecursive=1
+"let g:EasyGrepMode=3
+"let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py"
 
-"sidemenu plugin settings
-nmap <Leader>l <Plug>(sidemenu)
-xmap <Leader>l <Plug>(sidemenu-visual)
+""sidemenu plugin settings
+"nmap <Leader>l <Plug>(sidemenu)
+"xmap <Leader>l <Plug>(sidemenu-visual)
 
-"choosewin plugin settings
-nmap - <Plug>(choosewin)
+""choosewin plugin settings
+"nmap - <Plug>(choosewin)
 
-"buffergator plugin settings
-let g:buffergator_viewport_split_policy = "B"
+""buffergator plugin settings
+"let g:buffergator_viewport_split_policy = "B"
 
-"vim plug plugin settings
-let g:plug_window = 'vertical botright new'
+""vim plug plugin settings
+"let g:plug_window = 'vertical botright new'
 
-"gutentags plugin settings
-let g:gutentags_modules = ['ctags', 'cscope']
+""gutentags plugin settings
+"let g:gutentags_modules = ['ctags', 'cscope']
 
-"undotree plugin settings
-let g:undotree_CustomUndotreeCmd = 'botright vertical 32 new'
-let g:undotree_CustomDiffpanelCmd= 'belowright 12 new'
+""undotree plugin settings
+"let g:undotree_CustomUndotreeCmd = 'botright vertical 32 new'
+"let g:undotree_CustomDiffpanelCmd= 'belowright 12 new'
