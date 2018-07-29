@@ -212,6 +212,25 @@ Run :help ctrlp-mappings or submit ? in CtrlP for more mapping help.
 "Inner Word
 i
 
+"Move forward to begining of word
+w
+
+"Move backward to begining of word
+b
+
+"Move forward to end of word
+e
+
+"Move backward to end of word
+ge
+
+"Delete
+"Delete single character undor cursor
+x
+
+"Delete word under cursoe
+diw
+
 "Yanking
 "To yank an entire file and then paste it
 :%y+
