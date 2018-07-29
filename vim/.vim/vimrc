@@ -26,6 +26,7 @@ if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 endif
 
 "colorschemes
+Plug 'chriskempson/base16-vim'
 Plug 'blockloop/vim-codeschool'
 Plug 'vim-scripts/eclipse.vim'
 Plug 'rafi/awesome-vim-colorschemes'
@@ -41,7 +42,7 @@ Plug 'dkprice/vim-easygrep'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/taglist'
 Plug '~/.vim/plugged/cscope_maps'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'elzr/vim-json'
@@ -55,7 +56,6 @@ Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'
 Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
 Plug 'rafi/vim-sidemenu'    "<Leader>l
-"Plug 'vimwiki/vimwiki'
 Plug 't9md/vim-choosewin'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'vim-scripts/BufOnly.vim'
@@ -67,12 +67,17 @@ Plug 'junegunn/fzf'
 Plug 'wincent/terminus'
 Plug 'KevinGoodsell/vim-csexact'
 Plug 'mileszs/ack.vim'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'wesQ3/vim-windowswap'
+
+"Wiki and markdown
+"Plug 'vimwiki/vimwiki'
+Plug 'suan/vim-instant-markdown'
+
 call plug#end()
 
-source $VIMRUNTIME/mswin.vim
+"source $VIMRUNTIME/mswin.vim
 
 let g:lightline = {
       \ 'active': {
@@ -85,16 +90,19 @@ let g:lightline = {
       \ 'component': {
       \   'gutentags': '%{gutentags#statusline("[Generating...]")}',
       \ },
+      \ 'colorscheme': 'jellybeans',
       \ }
 
 "Gui, font, and colorscheme settings
-":set guifont=CourierNew\ 10
+:set guifont=CourierNew\ 10
 :set guioptions -=m "removes the menubar
 :set guioptions -=T	"removes the toolbar
-":set guioptions-=r  "remove right-hand scroll bar
-":set guioptions-=L  "remove left-hand scroll bar
-:colorscheme eclipse
+:set guioptions -=r "remove right hand scrollbar
+:set guioptions -=L "remove left hand scrollbar
+
+":colorscheme eclipse
 ":color codeschool
+:color base16-ocean
 ":color zenburn
 ":color carbonized-dark
 ":color materialbox
@@ -107,9 +115,9 @@ let g:lightline = {
 "LuciusDarkHighContrast
 
 "Start tlist when vim is started
-autocmd vimenter * TlistToggle
-let Tlist_Sort_Type = "name"
-let Tlist_Show_One_File = 1
+"autocmd vimenter * TlistToggle
+"let Tlist_Sort_Type = "name"
+"let Tlist_Show_One_File = 1
 
 "Start NERDTree when vim is started
 autocmd vimenter * NERDTree
@@ -127,6 +135,10 @@ autocmd vimenter * NERDTree
 "-------------------------------------------------
 "------------------VIM Settings-------------------
 "-------------------------------------------------
+"Put swap files in one directory
+set dir=~/Projects/swap
+
+:set noequalalways
 
 "Enable vim syntax coloring
 :syntax on
@@ -188,9 +200,11 @@ set ttimeout ttimeoutlen=50
 
 :nnoremap <A-x>d :Fp<space>
 :nnoremap <A-x>d<enter> :Fp<space><C-r><C-w><enter>
+if has('gui_running')
+:nnoremap <Esc> zR
+endif
 :nnoremap <Leader>e zR
 :nnoremap <C-]> <C-]>zz
-:nnoremap <F5> <C-W><Left>
 nnoremap * *``
 
 "Save all unsaved files
@@ -244,12 +258,12 @@ map <F11> :e ~/.vim/vimrc<CR>
 map <F12> :source ~/.vim/vimrc<CR>
 
 "autocmd VimEnter * <C-W>l
-autocmd VimEnter * wincmd l
-autocmd VimEnter * wincmd J
-autocmd VimEnter * wincmd k
-autocmd VimEnter * wincmd l
-autocmd VimEnter * wincmd L
-autocmd VimEnter * :execute "normal 80\<C-W>\|"
+"autocmd VimEnter * wincmd l
+"autocmd VimEnter * wincmd J
+"autocmd VimEnter * wincmd k
+"autocmd VimEnter * wincmd l
+"autocmd VimEnter * wincmd L
+"autocmd VimEnter * :execute "normal 80\<C-W>\|"
 "autocmd VimEnter * so ~/.vim/setmyfold.vim
 ":execute "normal so ~/.vim/setmyfold.vim"
 "so ~/.vim/setmyfold.vim"
@@ -275,7 +289,7 @@ set foldtext=MyFoldText()
 "set fillchars-=fold:-
 set fillchars=""
 
-let g:foldsearch_highlight=1
+let g:foldsearch_highlight=0
 
 "ctrlp plugin settings
 let g:ctrlp_max_depth=40
@@ -285,14 +299,13 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:miniBUfExplBuffersNeeded=1
 
 "syntastic plugin settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
 "easygrep plugin settings
 let g:EasyGrepCommand=1
@@ -301,14 +314,14 @@ let g:EasyGrepJumpToMatch=0
 let g:EasyGrepFileAssociationsInExplorer=1
 let g:EasyGrepRecursive=1
 let g:EasyGrepMode=3
-let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py"
+let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py CMakeLists.txt"
 let g:EasyGrepSearchCurrentBufferDir=0
 let g:EasyGrepAllOptionsInExplorer=1
 let g:EasyGrepWindow=1
 "Include hidden files to fix bug with ack, shouldn't matter since file
 "extenstions are listed above
 let g:EasyGrepHidden=1
-let g:EasyGrepFilesToExclude="build"
+let g:EasyGrepFilesToExclude="external"
 
 "sidemenu plugin settings
 nmap <Leader>l <Plug>(sidemenu)
@@ -330,3 +343,6 @@ let g:undotree_CustomDiffpanelCmd= 'belowright 12 new'
 "windowswap plugin settings
 let g:windowswap_map_keys=0
 nnoremap <silent> <leader>ws :call WindowSwap#EasyWindowSwap()<CR>
+
+"lightline plugin settings
+set laststatus=2

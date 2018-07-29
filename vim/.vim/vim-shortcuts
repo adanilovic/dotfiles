@@ -207,3 +207,33 @@ Run :help ctrlp-mappings or submit ? in CtrlP for more mapping help.
 :help key-notation	//shows the key notation
 :mksession	        //saves a vim layout
 :reg                //will list all registers
+
+"Motions
+"Inner Word
+i
+
+"Yanking
+"To yank an entire file and then paste it
+:%y+
+"+p
+
+"Yank whole line
+yy
+
+"To yank word under cursor into register
+yiw
+
+"To replace the word under cursor with a previously yanked word
+viwp
+
+"Create new line under cursor, when in command mode
+o
+
+"Create new line above cursor, when in command mode
+O
+
+"Undo
+u
+
+"Redo
+<Ctrl>-r
