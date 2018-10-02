@@ -99,15 +99,21 @@ let g:lightline = {
       \ }
 
 "Gui, font, and colorscheme settings
-:set guifont=CourierNew\ 11
+:set guifont=Bitstream\ Vera\ Sans\ Mono\ Roman\ 11
+":set guifont=CourierNew\ 11
 :set guioptions -=m "removes the menubar
 :set guioptions -=T	"removes the toolbar
 :set guioptions -=r "remove right hand scrollbar
 :set guioptions -=L "remove left hand scrollbar
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 ":colorscheme eclipse
 ":color codeschool
-:color base16-ocean
+":color base16-ocean
 ":color zenburn
 ":color carbonized-dark
 ":color materialbox
