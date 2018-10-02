@@ -34,7 +34,12 @@ Plug 'jnurmine/Zenburn'
 Plug 'romainl/Apprentice'
 Plug 'reedes/vim-colors-pencil'
 Plug 'Lokaltog/vim-distinguished'
+Plug 'mhartington/oceanic-next'
 Plug 'embear/vim-foldsearch'
+Plug 'sheerun/vim-polyglot'
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'edkolev/tmuxline.vim'
+
 Plug 'scrooloose/nerdtree'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-scripts/L9'
@@ -42,6 +47,7 @@ Plug 'dkprice/vim-easygrep'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/taglist'
 Plug '~/.vim/plugged/cscope_maps'
+
 "Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
@@ -70,7 +76,6 @@ Plug 'mileszs/ack.vim'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'wesQ3/vim-windowswap'
-
 "Wiki and markdown
 "Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
@@ -82,7 +87,7 @@ call plug#end()
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'gutentags' ],
-      \             [ 'gitbranch', 'readonly', 'modified', 'absolutepath'] ]
+      \             [ 'gitbranch', 'readonly', 'modified', 'filename'] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
@@ -90,11 +95,11 @@ let g:lightline = {
       \ 'component': {
       \   'gutentags': '%{gutentags#statusline("[Generating...]")}',
       \ },
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'wombat',
       \ }
 
 "Gui, font, and colorscheme settings
-:set guifont=CourierNew\ 10
+:set guifont=CourierNew\ 11
 :set guioptions -=m "removes the menubar
 :set guioptions -=T	"removes the toolbar
 :set guioptions -=r "remove right hand scrollbar
@@ -112,6 +117,7 @@ let g:lightline = {
 ":color termschool
 ":color ang:r
 ":colorscheme lucius
+":colorscheme base16-atelier-cave-light
 "LuciusDarkHighContrast
 
 "Start tlist when vim is started
@@ -224,6 +230,9 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "Make home key jump to first character on line
 :map <Home> ^
 :imap <Home> <Esc>I
+
+"Use <leader>p to past from previously yanked register
+xnoremap <leader>p "0p
 
 " F2: Adjust current windows
 map <F2> 200<C-W>\|
@@ -346,3 +355,7 @@ nnoremap <silent> <leader>ws :call WindowSwap#EasyWindowSwap()<CR>
 
 "lightline plugin settings
 set laststatus=2
+
+if !has('gui_running')
+    set t_Co=256
+endif

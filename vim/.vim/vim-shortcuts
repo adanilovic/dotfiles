@@ -158,9 +158,7 @@ q/
 "+ is one of vim's global register
 
 "0 is the yank register
-
 "1-9 are the history/delete registers
-"0 is the yank register
 "a-z are named registers
 "A-Z same as "a-z" but append
 
@@ -168,6 +166,8 @@ q/
 "- is the small delete
 "= is the expression register, e.g. <insert mode><C-r>=1+2
 "_ is the black hole register
+
+\p will paste the previously yanked text from "0
 
 ": is the last : command
 ". last inserted text
