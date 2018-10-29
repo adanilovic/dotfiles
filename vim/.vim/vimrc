@@ -79,6 +79,9 @@ Plug 'wesQ3/vim-windowswap'
 "Wiki and markdown
 "Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
+Plug 'liuchengxu/vim-which-key'
+Plug 'tpope/vim-dispatch'
+Plug 'yssl/QFEnter'
 
 call plug#end()
 
@@ -99,7 +102,7 @@ let g:lightline = {
       \ }
 
 "Gui, font, and colorscheme settings
-:set guifont=Bitstream\ Vera\ Sans\ Mono\ Roman\ 11
+":set guifont=Bitstream\ Vera\ Sans\ Mono\ Roman\ 11
 ":set guifont=CourierNew\ 11
 :set guioptions -=m "removes the menubar
 :set guioptions -=T	"removes the toolbar
@@ -111,6 +114,9 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+set t_tu=
+
+":colorscheme atom-dark
 ":colorscheme eclipse
 ":color codeschool
 ":color base16-ocean
@@ -159,6 +165,9 @@ set dir=~/Projects/swap
 set wildmenu
 set wildmode=list:longest,full
 
+"Tab-complete file find using :find
+set path=$PWD/**
+
 "Display line numbers
 set number
 
@@ -204,7 +213,7 @@ set ttymouse=xterm2
 set splitright
 
 "make vim as responsive as gvim
-set ttimeout ttimeoutlen=50
+"set ttimeout ttimeoutlen=50
 
 "-------------------------------------------------
 "------------------Key Mappings-------------------
@@ -272,6 +281,18 @@ map <F11> :e ~/.vim/vimrc<CR>
 "F12: Source vimrc
 map <F12> :source ~/.vim/vimrc<CR>
 
+"Run make in corresponding test build output directory
+:nnoremap <Leader>t :call Dispatch_CPPUTest_make()<CR>
+function! Dispatch_CPPUTest_make()
+    execute "Dispatch make --dir=" . 'build/' . finddir('test', expand('%:p') . ';')
+endfunction
+
+"Run all test in corresponding test build output directory
+:nnoremap <Leader>r :call Dispatch_CPPUTest_run()<CR>
+function! Dispatch_CPPUTest_run()
+    execute "Dispatch run-parts --verbose --report --exit-on-error " . 'build/' . finddir('test', expand('%:p') . ';')
+endfunction
+
 "autocmd VimEnter * <C-W>l
 "autocmd VimEnter * wincmd l
 "autocmd VimEnter * wincmd J
@@ -324,7 +345,7 @@ let g:miniBUfExplBuffersNeeded=1
 
 "easygrep plugin settings
 let g:EasyGrepCommand=1
-"let g:EasyGrepWindowPosition=botleft
+let g:EasyGrepWindowPosition="belowright"
 let g:EasyGrepJumpToMatch=0
 let g:EasyGrepFileAssociationsInExplorer=1
 let g:EasyGrepRecursive=1
