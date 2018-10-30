@@ -69,7 +69,8 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
 Plug 'gregsexton/gitv'
 Plug 'simeji/winresizer'    "<C-E>, followed by hjkl
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'wincent/terminus'
 Plug 'KevinGoodsell/vim-csexact'
 Plug 'mileszs/ack.vim'
@@ -167,6 +168,8 @@ set wildmode=list:longest,full
 
 "Tab-complete file find using :find
 set path=$PWD/**
+set path+=~/.vim
+set path+=~/dotfiles
 
 "Display line numbers
 set number
@@ -215,6 +218,9 @@ set splitright
 "make vim as responsive as gvim
 "set ttimeout ttimeoutlen=50
 
+"don't add comment on next line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 "-------------------------------------------------
 "------------------Key Mappings-------------------
 "-------------------------------------------------
@@ -245,6 +251,21 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "Make home key jump to first character on line
 :map <Home> ^
 :imap <Home> <Esc>I
+
+"Run make in corresponding test build output directory
+:nnoremap <Leader>t :call Dispatch_CPPUTest_make()<CR>
+function! Dispatch_CPPUTest_make()
+    execute "Dispatch make --dir=" . 'build/' . finddir('test', expand('%:p') . ';')
+endfunction
+
+"Run all test in corresponding test build output directory
+:nnoremap <Leader>r :call Dispatch_CPPUTest_run()<CR>
+function! Dispatch_CPPUTest_run()
+    execute "Dispatch run-parts --verbose --report --exit-on-error " . 'build/' . finddir('test', expand('%:p') . ';')
+endfunction
+
+"Run FZF
+:nnoremap <Leader>d :FZF<CR>
 
 "Use <leader>p to past from previously yanked register
 xnoremap <leader>p "0p
@@ -280,18 +301,6 @@ map <F11> :e ~/.vim/vimrc<CR>
 
 "F12: Source vimrc
 map <F12> :source ~/.vim/vimrc<CR>
-
-"Run make in corresponding test build output directory
-:nnoremap <Leader>t :call Dispatch_CPPUTest_make()<CR>
-function! Dispatch_CPPUTest_make()
-    execute "Dispatch make --dir=" . 'build/' . finddir('test', expand('%:p') . ';')
-endfunction
-
-"Run all test in corresponding test build output directory
-:nnoremap <Leader>r :call Dispatch_CPPUTest_run()<CR>
-function! Dispatch_CPPUTest_run()
-    execute "Dispatch run-parts --verbose --report --exit-on-error " . 'build/' . finddir('test', expand('%:p') . ';')
-endfunction
 
 "autocmd VimEnter * <C-W>l
 "autocmd VimEnter * wincmd l
@@ -331,8 +340,9 @@ let g:foldsearch_highlight=0
 let g:ctrlp_max_depth=40
 let g:ctrlp_clear_cache_on_exit = 0
 
-"let minibufeplr show up as soon as a buffer is available
-let g:miniBUfExplBuffersNeeded=1
+"do not start minibuxexplorer automatically
+let g:miniBufExplBuffersNeeded=1
+let g:miniBufExplorerAutoStart=0
 
 "syntastic plugin settings
 "set statusline+=%#warningmsg#
@@ -382,6 +392,13 @@ nnoremap <silent> <leader>ws :call WindowSwap#EasyWindowSwap()<CR>
 
 "lightline plugin settings
 set laststatus=2
+
+"CtrlP plugin settings
+let g:ctrlp_extensions = ['tag', 'dir', 'rtscript', 'bookmarkdir']
+let g:ctrlp_match_window = 'results:100'
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 if !has('gui_running')
     set t_Co=256
