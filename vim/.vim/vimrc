@@ -83,6 +83,10 @@ Plug 'suan/vim-instant-markdown'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-dispatch'
 Plug 'yssl/QFEnter'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'wincent/scalpel'
+Plug 'wincent/loupe'
 
 call plug#end()
 
@@ -216,7 +220,7 @@ set ttymouse=xterm2
 set splitright
 
 "make vim as responsive as gvim
-"set ttimeout ttimeoutlen=50
+set ttimeout ttimeoutlen=100
 
 "don't add comment on next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -269,6 +273,9 @@ endfunction
 
 "Use <leader>p to past from previously yanked register
 xnoremap <leader>p "0p
+
+"Always use global tag jump
+nnoremap <C-]> g<C-]>
 
 " F2: Adjust current windows
 map <F2> 200<C-W>\|
@@ -403,3 +410,6 @@ endif
 if !has('gui_running')
     set t_Co=256
 endif
+
+"Scalpel settings
+nmap <Leader>s <Plug>(Scalpel)
