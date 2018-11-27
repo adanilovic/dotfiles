@@ -86,7 +86,6 @@ Plug 'yssl/QFEnter'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'wincent/scalpel'
-Plug 'wincent/loupe'
 
 call plug#end()
 
@@ -165,6 +164,9 @@ set dir=~/Projects/swap
 
 "Enable vim syntax coloring
 :syntax on
+
+"Turn matching paren highlighting off
+au VimEnter * NoMatchParen
 
 "Allow tab completion on VIM commands
 set wildmenu
@@ -302,6 +304,9 @@ map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
 
 " F9: Build cscope database
 map <F9> :!cscope -b -q -k -R .<CR>
+
+" F10: Toggle gull screen gvim
+map <silent> <F10> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
 "F11: Open vimrc
 map <F11> :e ~/.vim/vimrc<CR>
