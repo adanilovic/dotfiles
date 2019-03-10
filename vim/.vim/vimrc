@@ -26,7 +26,7 @@ if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 endif
 
 "colorschemes
-Plug 'chriskempson/base16-vim'
+Plug 'danielwe/base16-vim'
 Plug 'blockloop/vim-codeschool'
 Plug 'vim-scripts/eclipse.vim'
 Plug 'rafi/awesome-vim-colorschemes'
