@@ -13,11 +13,6 @@ if empty(glob('~/.vim/plugged/taglist/plugin/taglist.vim'))
     silent !rm ~/.vim/plugged/taglist/taglist_46.zip
 endif
 
-if empty(glob('~/.vim/plugged/cscope_maps/cscope_maps.vim'))
-    silent !curl -fLo ~/.vim/plugged/cscope_maps/cscope_maps.vim --create-dirs
-        \ http://cscope.sourceforge.net/cscope_maps.vim
-endif
-
 call plug#begin('~/.vim/plugged')
 
 " Automatically install missing plugins on startup
@@ -46,7 +41,7 @@ Plug 'vim-scripts/L9'
 Plug 'dkprice/vim-easygrep'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/taglist'
-Plug '~/.vim/plugged/cscope_maps'
+Plug 'joe-skb7/cscope-maps'
 
 "Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
@@ -89,6 +84,8 @@ Plug 'honza/vim-snippets'
 Plug 'wincent/scalpel'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'easymotion/vim-easymotion'
+"Plug 'ervandew/supertab'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -230,6 +227,9 @@ set ttimeout ttimeoutlen=100
 "don't add comment on next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+"Detect empty .tex files as latext format
+let g:tex_flavor = "latex"
+
 "-------------------------------------------------
 "------------------Key Mappings-------------------
 "-------------------------------------------------
@@ -239,7 +239,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 if has('gui_running')
 :nnoremap <Esc> zR
 endif
-:nnoremap <Leader>e zR
+:nnoremap <Leader>e zi
 :nnoremap <C-]> <C-]>zz
 nnoremap * *``
 
@@ -298,7 +298,7 @@ map <silent> <F5> :Tlist<CR>
 " F6: Toggle NERDTree
 map <silent> <F6> :NERDTreeToggle<CR>
 
-" F7: Toggle nerdtree
+" F7: Toggle UndoTree
 nnoremap <F7> :UndotreeToggle<cr>
 
 " F8: Rebuild ctags database
@@ -375,7 +375,7 @@ let g:EasyGrepJumpToMatch=0
 let g:EasyGrepFileAssociationsInExplorer=1
 let g:EasyGrepRecursive=1
 let g:EasyGrepMode=3
-let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py CMakeLists.txt"
+let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py CMakeLists.txt *.asm"
 let g:EasyGrepSearchCurrentBufferDir=0
 let g:EasyGrepAllOptionsInExplorer=1
 let g:EasyGrepWindow=1
@@ -395,7 +395,7 @@ nmap - <Plug>(choosewin)
 let g:plug_window = 'vertical botright new'
 
 "gutentags plugin settings
-let g:gutentags_modules = ['ctags']
+let g:gutentags_modules = ['ctags', 'gtags_cscope']
 
 "undotree plugin settings
 let g:undotree_CustomUndotreeCmd = 'botright vertical 32 new'
@@ -420,7 +420,7 @@ if !has('gui_running')
 endif
 
 "Scalpel settings
-nmap <Leader>s <Plug>(Scalpel)
+nmap <Leader>b <Plug>(Scalpel)
 
 "YouCompleteMe settings
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -428,9 +428,23 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_key_detailed_diagnostics = '<leader>a'
 let g:ycm_extra_confg_globlist = ['~/Projects/*','~!/*']
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+"let g:ycm_key_list_stop_completion = ['<Down>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+
+"UltiSnip settings
+let g:UltiSnipsExpandTrigger = "<TAB>"
+let g:UltiSnipsJumpForwardTrigger = "<Right>"
+let g:UltiSnipsJumpBackwardTrigger = "<Left>"
 
 "Vim easy motion settings
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
@@ -440,9 +454,6 @@ nmap <Leader>s <Plug>(easymotion-overwin-f)
 " Need one more keystroke, but on average, it may be more comfortable.
 nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+"vimtext settings
+let g:polyglot_disabled = ['latex']
+let g:vimtex_matchparen_enabled = 0
