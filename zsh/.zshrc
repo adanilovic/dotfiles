@@ -24,7 +24,7 @@ ZSH_THEME="wezm"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+ DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -103,4 +103,13 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='ag --hidden --follow --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='rg --files'
+
+if [[ ! -d ~/.zplug ]];then
+    git clone https://github.com/b4b4r07/zplug ~/.zplug
+fi
+
+source ~/.zplug/init.zsh
+
+zplug 'wfxr/forgit'
+zplug load --verbose
