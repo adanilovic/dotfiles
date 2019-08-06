@@ -24,38 +24,31 @@ endif
 Plug 'danielwe/base16-vim'
 Plug 'blockloop/vim-codeschool'
 Plug 'vim-scripts/eclipse.vim'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'nanotech/jellybeans.vim'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'jnurmine/Zenburn'
 Plug 'romainl/Apprentice'
 Plug 'reedes/vim-colors-pencil'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'mhartington/oceanic-next'
-Plug 'embear/vim-foldsearch'
-Plug 'sheerun/vim-polyglot'
 Plug 'gosukiwi/vim-atom-dark'
-Plug 'edkolev/tmuxline.vim'
 
-Plug 'scrooloose/nerdtree'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-scripts/L9'
 Plug 'dkprice/vim-easygrep'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/taglist'
 Plug 'joe-skb7/cscope-maps'
 
-"Plug 'vim-syntastic/syntastic'
+Plug 'embear/vim-foldsearch'
+Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'elzr/vim-json'
-Plug 'tpope/vim-fugitive'
 Plug 'kablamo/vim-git-log'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'nanotech/jellybeans.vim'
 Plug 'hari-rangarajan/CCTree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'xolox/vim-colorscheme-switcher'
-Plug 'xolox/vim-misc'
-Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
+Plug 'scrooloose/nerdtree'
 Plug 'rafi/vim-sidemenu'    "<Leader>l
 Plug 't9md/vim-choosewin'
 Plug 'MattesGroeger/vim-bookmarks'
@@ -63,12 +56,10 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
 Plug 'gregsexton/gitv'
-Plug 'simeji/winresizer'    "<C-E>, followed by hjkl
+Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'wincent/terminus'
 Plug 'KevinGoodsell/vim-csexact'
-Plug 'mileszs/ack.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', {'branch':'stable'}
 Plug 'jlanzarotta/bufexplorer'
@@ -78,6 +69,7 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'suan/vim-instant-markdown'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
 Plug 'yssl/QFEnter'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -90,6 +82,15 @@ Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
+Plug 'wincent/ferret'
+"Plug 'romainl/vim-qf'
+"Plug 'romainl/vim-qlist'
+"Plug 'plugin/vim-codequery'
+"Plug 'haya14busa/incsearch.vim'
+"Plug 'henrik/vim-indexed-search'
+"Plug 'google/vim-searchindex'
+"Plug 'maxbrunsfeld/vim-yankstack'
+Plug '~/dotfiles/vim/.vim/plugged/vim-explore'
 
 call plug#end()
 
@@ -97,8 +98,8 @@ call plug#end()
 
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'gutentags' ],
-      \             [ 'gitbranch', 'readonly', 'modified', 'filename'] ],
+      \   'left': [ [ 'mode', 'paste', 'gutentags'],
+      \             [ 'gitbranch', 'readonly', 'modified', 'filename', 'filep']],
       \   'right': [ ['lineinfo'],
       \              ['percent'],
       \              ['fileformat', 'fileencoding', 'filetype'],
@@ -110,6 +111,7 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'gutentags': '%{gutentags#statusline("[Generating...]")}',
+      \   'filep':'%{getfperm(@%)}'
       \ },
       \ 'colorscheme': 'wombat',
       \ }
@@ -179,7 +181,7 @@ autocmd vimenter * NERDTree
 "highlight FoldColumn  gui=bold    guifg=grey65     guibg=Grey90
 "highlight Folded      gui=italic  guifg=Black      guibg=Grey90
 "highlight LineNr      gui=NONE    guifg=grey60     guibg=Grey90
-:highlight Search gui=bold guifg=#5440f0 guibg=#f0c0ff
+":highlight Search gui=bold guifg=#5440f0 guibg=#f0c0ff
 
 "-------------------------------------------------
 "------------------VIM Settings-------------------
@@ -193,7 +195,7 @@ set dir=~/Projects/swap
 :syntax on
 
 "Turn matching paren highlighting off
-au VimEnter * NoMatchParen
+"au VimEnter * NoMatchParen
 
 "Allow tab completion on VIM commands
 set wildmenu
@@ -259,7 +261,6 @@ let g:tex_flavor = "latex"
 
 set modelines=0
 set nomodeline
-
 set secure
 
 "-------------------------------------------------
@@ -309,7 +310,6 @@ endfunction
 :nnoremap <Leader>d :FZF<CR>
 :nnoremap <Leader>g :Rg<space>
 :nnoremap <Leader>g<CR> :Rg<space><C-R><C-W><CR>
-:let $RIPGREP_CONFIG_PATH = '.ripgreprc'
 
 "Use <leader>p to past from previously yanked register
 xnoremap <leader>p "0p
@@ -343,13 +343,13 @@ map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
 " F9: Build cscope database
 map <F9> :!cscope -b -q -k -R .<CR>
 
-"F10: Open vimrc
+" F10: Open vimrc
 map <F10> :e ~/.vim/vimrc<CR>
 
 " F11: Toggle gull screen gvim
 map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
-"F12: Source vimrc
+" F12: Source vimrc
 map <F12> :source ~/.vim/vimrc<CR>
 
 "autocmd VimEnter * <C-W>l
@@ -364,7 +364,7 @@ map <F12> :source ~/.vim/vimrc<CR>
 "so ~/.vim/setmyfold.vim"
 
 "Remove trailing trailing white space on file save
-autocmd FileType c,cpp,h,hpp,java,php,python autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType c,cpp,h,hpp,java,php,python,asm autocmd BufWritePre <buffer> %s/\s\+$//e
 
 "-------------------------------------------------
 "-----------------Plugin settings-----------------
@@ -386,22 +386,9 @@ set fillchars=""
 
 let g:foldsearch_highlight=0
 
-"ctrlp plugin settings
-let g:ctrlp_max_depth=40
-let g:ctrlp_clear_cache_on_exit = 0
-
 "do not start minibuxexplorer automatically
 let g:miniBufExplBuffersNeeded=1
 let g:miniBufExplorerAutoStart=0
-
-"syntastic plugin settings
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
 
 "easygrep plugin settings
 let g:EasyGrepCommand=1
@@ -448,13 +435,6 @@ autocmd CursorHoldI * call lightline#update()
 autocmd CursorMoved * call lightline#update()
 autocmd CursorMovedI * call lightline#update()
 autocmd BufEnter * call lightline#update()
-
-"CtrlP plugin settings
-let g:ctrlp_extensions = ['tag', 'dir', 'rtscript', 'bookmarkdir']
-let g:ctrlp_match_window = 'results:100'
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
 
 if !has('gui_running')
     set t_Co=256
@@ -508,3 +488,23 @@ let g:ale_python_pylint_use_global = 0
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+"Ferret settings
+nmap <leader>x <Plug>(FerretAck)
+nmap <leader>z <Plug>(FerretAckWord)
+let g:FerretHlsearch=0
+let g:FerretExecutable='rg'
+let g:FerretExecutableArguments = {
+      \   'rg': '--vimgrep --no-heading --max-columns 4096'
+      \ }
+
+function! s:base16_customize() abort
+  call Base16hi("MatchParen", g:base16_gui01, "608580", g:base16_cterm05, g:base16_cterm03, "bold", "")
+  call Base16hi("Search", g:base16_gui01, g:base16_gui0C, g:base16_cterm05, g:base16_cterm03, "", "")
+  "call Base16hi("Visual", g:base16_gui01, g:base16_gui0D, "", g:base16_cterm0A, "", "")
+endfunction
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
