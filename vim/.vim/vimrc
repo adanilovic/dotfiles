@@ -90,7 +90,6 @@ Plug 'wincent/ferret'
 "Plug 'henrik/vim-indexed-search'
 "Plug 'google/vim-searchindex'
 "Plug 'maxbrunsfeld/vim-yankstack'
-Plug '~/dotfiles/vim/.vim/plugged/vim-explore'
 
 call plug#end()
 
