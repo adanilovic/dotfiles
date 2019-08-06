@@ -6,13 +6,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYGVIMRC
 endif
 
-if empty(glob('~/.vim/plugged/taglist/plugin/taglist.vim'))
-    silent !curl -fLo ~/.vim/plugged/taglist/taglist_46.zip --create-dirs
-        \ https://vim.sourceforge.io/scripts/download_script.php?src_id=19574
-    silent !unzip ~/.vim/plugged/taglist/taglist_46.zip -d ~/.vim/plugged/taglist/
-    silent !rm ~/.vim/plugged/taglist/taglist_46.zip
-endif
-
 call plug#begin('~/.vim/plugged')
 
 " Automatically install missing plugins on startup
@@ -37,7 +30,7 @@ Plug 'gosukiwi/vim-atom-dark'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-scripts/L9'
 Plug 'dkprice/vim-easygrep'
-Plug '~/.vim/plugged/taglist'
+Plug 'majutsushi/tagbar'
 Plug 'joe-skb7/cscope-maps'
 
 Plug 'embear/vim-foldsearch'
@@ -90,6 +83,7 @@ Plug 'wincent/ferret'
 "Plug 'henrik/vim-indexed-search'
 "Plug 'google/vim-searchindex'
 "Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'cohama/agit.vim'
 
 call plug#end()
 
@@ -226,7 +220,7 @@ set ignorecase
 "but become case sensitive if you type uppercase characters
 set smartcase
 set nowrap
-:set scrolloff=4
+set scrolloff=0
 
 "make backspace behave as normal
 set backspace=indent,eol,start
@@ -278,6 +272,9 @@ endif
 "Save all unsaved files
 nmap <leader>ww :wa<cr>
 
+"Clear search highlight
+nnoremap <BS> :noh<CR>
+
 "The following key maps allow <A-x>d :Fp to work in vim
 let c='a'
 while c <= 'z'
@@ -326,8 +323,7 @@ map <F3> :!clear;python %<CR>
 map <silent> <F4> :MBEToggle<CR>
 
 " F5: Tag list
-imap <silent> <F5> :Tlist<CR>
-map <silent> <F5> :Tlist<CR>
+nmap <F5> :TagbarToggle<CR>
 
 " F6: Toggle NERDTree
 map <silent> <F6> :NERDTreeToggle<CR>
