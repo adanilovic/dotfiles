@@ -26,68 +26,112 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'mhartington/oceanic-next'
 Plug 'gosukiwi/vim-atom-dark'
+Plug 'KevinGoodsell/vim-csexact'
 
 Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-scripts/L9'
-Plug 'dkprice/vim-easygrep'
 Plug 'majutsushi/tagbar'
 Plug 'joe-skb7/cscope-maps'
 
-Plug 'embear/vim-foldsearch'
-Plug 'sheerun/vim-polyglot'
-Plug 'airblade/vim-gitgutter'
+"status line
 Plug 'itchyny/lightline.vim'
-Plug 'elzr/vim-json'
-Plug 'kablamo/vim-git-log'
-Plug 'hari-rangarajan/CCTree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'rafi/vim-sidemenu'    "<Leader>l
-Plug 't9md/vim-choosewin'
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'vim-scripts/BufOnly.vim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'mbbill/undotree'
-Plug 'gregsexton/gitv'
-Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'KevinGoodsell/vim-csexact'
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', {'branch':'stable'}
-Plug 'jlanzarotta/bufexplorer'
-Plug 'wesQ3/vim-windowswap'
-"Wiki and markdown
-"Plug 'vimwiki/vimwiki'
-Plug 'suan/vim-instant-markdown'
-Plug 'liuchengxu/vim-which-key'
-Plug 'tpope/vim-dispatch'
+Plug 'maximbaz/lightline-ale'
+"Plug 'mengelbrecht/lightline-bufferline'
+
+"git integration
 Plug 'tpope/vim-fugitive'
-Plug 'yssl/QFEnter'
+Plug 'airblade/vim-gitgutter'
+Plug 'kablamo/vim-git-log'
+Plug 'gregsexton/gitv'
+Plug 'junegunn/gv.vim'
+Plug 'cohama/agit.vim'
+
+"snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'wincent/scalpel'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'easymotion/vim-easymotion'
-"Plug 'ervandew/supertab'
-Plug 'lervag/vimtex'
-Plug 'w0rp/ale'
-Plug 'maximbaz/lightline-ale'
-Plug 'inkarkat/vim-mark'
-Plug 'inkarkat/vim-ingo-library'
+
+"search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'embear/vim-foldsearch'
 Plug 'wincent/ferret'
+Plug 'wincent/scalpel'
+"Plug 'haya14busa/incsearch.vim'
+Plug 'henrik/vim-indexed-search'
+"Plug 'qxxxb/vim-searchhi'
+Plug 'PeterRincker/vim-searchlight'
+Plug 'haya14busa/vim-asterisk'
+
+"tags
+"Plug 'lyuts/vim-rtags'
+Plug 'ludovicchabant/vim-gutentags'
+
+"auto complete
+"Plug 'hari-rangarajan/CCTreete
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'rdnetto/YCM-Generator', {'branch':'stable'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'w0rp/ale'
+Plug 'm-pilia/vim-ccls'
+
+"lint
+Plug 'jpalardy/vim-slime'
+
+"language specific
+let g:polyglot_disabled = ['latex']
+Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'suan/vim-instant-markdown'
+
+"debugging
+"Plug 'puremourning/vimspector'
+
+"buffers
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'wesQ3/vim-windowswap'
+Plug 'junegunn/vim-peekaboo' "Show the contents of vim registers
+Plug 'yssl/QFEnter'
+Plug 'jlanzarotta/bufexplorer'
+Plug 't9md/vim-choosewin'
+Plug 'mbbill/undotree'
+Plug 'scrooloose/nerdtree'
+
+"compiler
+Plug 'senbrow/vim-noerror-compiler'
+
+"motion
+Plug 'easymotion/vim-easymotion'
+
+"async
+Plug 'tpope/vim-dispatch'
+Plug 'jpalardy/vim-slime'
+
+"bookmarks
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'inkarkat/vim-ingo-library'
+"Plug 'inkarkat/vim-mark'
+
+Plug 'scrooloose/nerdcommenter'
+"Plug 'rafi/vim-sidemenu'    "<Leader>l
+Plug 'liuchengxu/vim-which-key'
+"Plug 'ervandew/supertab'
 "Plug 'romainl/vim-qf'
 "Plug 'romainl/vim-qlist'
 "Plug 'plugin/vim-codequery'
-"Plug 'haya14busa/incsearch.vim'
-"Plug 'henrik/vim-indexed-search'
-"Plug 'google/vim-searchindex'
 "Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'cohama/agit.vim'
+"Plug 'gillyb/stable-windows'
+"Plug 'hecal3/vim-leader-guide'
+
+if has('nvim')
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+"Plug 'folke/trouble.nvim'
+endif
 
 call plug#end()
-
-"source $VIMRUNTIME/mswin.vim
 
 let g:lightline = {
       \ 'active': {
@@ -127,13 +171,78 @@ let g:lightline.component_type = {
       \     'ycm_linter_errors': 'error',
       \ }
 
+"let g:lightline = {
+      "\ 'active': {
+      "\   'left': [ [ 'mode', 'paste', 'gutentags'],
+      "\             [ 'gitbranch', 'readonly', 'modified', 'filename', 'filep']],
+      "\   'right': [ ['lineinfo'],
+      "\              ['percent'],
+      "\              ['fileformat', 'fileencoding', 'filetype'],
+      "\              ['ycm_linter_errors', 'ycm_linter_warnings'],
+      "\              ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
+      "\ },
+      "\ 'tabline': {
+      "\   'left': [ ['buffers'] ],
+      "\   'right': [ ['close'] ]
+      "\  },
+      "\ 'component_function': {
+      "\   'gitbranch': 'fugitive#head'
+      "\ },
+      "\ 'component': {
+      "\   'gutentags': '%{gutentags#statusline("[Generating...]")}',
+      "\   'filep':'%{getfperm(@%)}'
+      "\ },
+      "\ 'colorscheme': 'wombat',
+      "\ }
+
+"let g:lightline.component_expand = {
+      "\  'linter_checking': 'lightline#ale#checking',
+      "\  'linter_warnings': 'lightline#ale#warnings',
+      "\  'linter_errors': 'lightline#ale#errors',
+      "\  'linter_ok': 'lightline#ale#ok',
+      "\  'ycm_linter_warnings': 'youcompleteme#GetWarningCount',
+      "\  'ycm_linter_errors': 'youcompleteme#GetErrorCount',
+      "\  'buffers': 'lightline#bufferline#buffers',
+      "\ }
+
+"let g:lightline.component_type = {
+      "\     'linter_checking': 'left',
+      "\     'linter_warnings': 'warning',
+      "\     'linter_errors': 'error',
+      "\     'linter_ok': 'left',
+      "\     'ycm_linter_warnings': 'warning',
+      "\     'ycm_linter_errors': 'error',
+      "\     'buffers': 'tabsel',
+      "\ }
+
+"let g:lightline#bufferline#show_number  = 1
+"let g:lightline#bufferline#shorten_path = 0
+"let g:lightline#bufferline#unnamed      = '[No Name]'
+"let g:lightline#bufferline#filename_modifier = ':t'
+
+"nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+"nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+"nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+"nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+"nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+"nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+"nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+"nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+"nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+"nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
 "Gui, font, and colorscheme settings
 ":set guifont=Bitstream\ Vera\ Sans\ Mono\ Roman\ 11
-":set guifont=CourierNew\ 11
+:set guifont=CourierNew\ 11
+":set guifont=Monospace\ 11
+if !has('nvim')
 :set guioptions -=m "removes the menubar
 :set guioptions -=T	"removes the toolbar
 :set guioptions -=r "remove right hand scrollbar
 :set guioptions -=L "remove left hand scrollbar
+endif
+":set guioptions -=e "disable GUI tabline and enable lightline tabline
+":set showtabline =2
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -164,8 +273,8 @@ set t_tu=
 "let Tlist_Show_One_File = 1
 
 "Start NERDTree when vim is started
-autocmd vimenter * NERDTree
-:let NERDTreeQuitOnOpen = 0
+"autocmd vimenter * NERDTree
+":let NERDTreeQuitOnOpen = 0
 :let NERDTreeShowHidden=1
 
 "Switch the cursor to be in the main window
@@ -238,13 +347,18 @@ set t_vb=		" and then clear the visual bell code
 "always show the mouse cursor
 set mousehide!
 set mouse=n
+if !has('nvim')
 set ttymouse=xterm2
+endif
 
 "when creating a new vertical split, create it on the right
 set splitright
 
 "make vim as responsive as gvim
-set ttimeout ttimeoutlen=100
+"set ttimeout ttimeoutlen=1
+
+"make nvim Esc command as responsive as gvim
+set nottimeout
 
 "don't add comment on next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -256,15 +370,19 @@ set modelines=0
 set nomodeline
 set secure
 
+set shell=bash
+
+set exrc
+
 "-------------------------------------------------
 "------------------Key Mappings-------------------
 "-------------------------------------------------
 
 :nnoremap <A-x>d :Fp<space>
 :nnoremap <A-x>d<CR> :Fp<space><C-r><C-w><CR>
-if has('gui_running')
+"if has('gui_running')
 :nnoremap <Esc> zR
-endif
+"endif
 :nnoremap <Leader>e zi
 :nnoremap <C-]> <C-]>zz
 ":nnoremap <silent> * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
@@ -273,15 +391,24 @@ endif
 nmap <leader>ww :wa<cr>
 
 "Clear search highlight
-nnoremap <BS> :noh<CR>
+"nnoremap <BS> :noh \| let @/=""<CR>
+"nnoremap <BS> :noh<CR>
+nnoremap <BS> :call MyBackspaceClearHighlight()<CR>
+
+function! MyBackspaceClearHighlight()
+    call feedkeys( ":nohlsearch\<CR>" )
+    "highlight link CurrentSearch NONE
+endfunction
 
 "The following key maps allow <A-x>d :Fp to work in vim
 let c='a'
+if !has('nvim')
 while c <= 'z'
   exec "set <A-".c.">=\e".c
   exec "imap \e".c." <A-".c.">"
   let c = nr2char(1+char2nr(c))
 endw
+endif
 
 "Alt+] - Open the definition in a vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
@@ -297,30 +424,52 @@ function! Dispatch_CPPUTest_make()
 endfunction
 
 "Run all test in corresponding test build output directory
-":nnoremap <Leader>r :call Dispatch_CPPUTest_run()<CR>
+:nnoremap <Leader>' :call Dispatch_CPPUTest_run()<CR>
 function! Dispatch_CPPUTest_run()
-    execute "Dispatch run-parts --verbose --report --exit-on-error " . 'build/' . finddir('test', expand('%:p') . ';')
+    let l:program_directory = 'build/' . finddir('test', expand('%:p') . ';')
+    let l:change_dir_command = 'cd ' . l:program_directory
+    let l:change_dir_and_execute_command = l:change_dir_command . ' && run-parts --verbose --report --exit-on-error .'
+    execute "Dispatch -compiler=noerror " . l:change_dir_and_execute_command
 endfunction
+
+"Run project specific command
+:nnoremap <Leader>; :call Dispatch_project_command()<CR>
+function! Dispatch_project_command()
+    if exists('g:my_project_command')
+        execute "Dispatch ".expand(g:my_project_command)
+    endif
+endfunction
+
+"source ~/.vim/my_execute_command.vim
+
+":nnoremap <Leader>; :call Dispatch_app_build_run()<CR>
+"function! Dispatch_app_build_run()
+    "execute 'Dispatch! '.expand(g:my_execute_command1)
+    ""execute 'Dispatch! '.expand(g:my_execute_command2)
+"endfunction
 
 "Run FZF
 :nnoremap <Leader>d :FZF<CR>
 :nnoremap <Leader>g :Rg<space>
 :nnoremap <Leader>g<CR> :Rg<space><C-R><C-W><CR>
 
-"Use <leader>p to past from previously yanked register
-xnoremap <leader>p "0p
+"Use <leader>p to paste from previously yanked register
+noremap <leader>p "0p
 
 "Always use global tag jump
 nnoremap <C-]> g<C-]>
 
 " F2: Adjust current windows
-map <F2> 200<C-W>\|
+"map <F2> 200<C-W>\|
+
+" F2: Open vimrc
+map <F2> :e ~/.vim/vimrc<CR>
 
 " F3: Run python script in current buffer
-map <F3> :!clear;python %<CR>
+"map <F3> :!clear;python %<CR>
 
 " F4: Buffer list
-map <silent> <F4> :MBEToggle<CR>
+"map <silent> <F4> :MBEToggle<CR>
 
 " F5: Tag list
 nmap <F5> :TagbarToggle<CR>
@@ -329,19 +478,19 @@ nmap <F5> :TagbarToggle<CR>
 map <silent> <F6> :NERDTreeToggle<CR>
 
 " F7: Toggle UndoTree
-nnoremap <F7> :UndotreeToggle<cr>
+"nnoremap <F7> :UndotreeToggle<cr>
 
 " F8: Rebuild ctags database
-map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
+"map <F8> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+qf .<CR>
 "ctags -R -f ./.git/tags .
 
 " F9: Build cscope database
-map <F9> :!cscope -b -q -k -R .<CR>
+"map <F9> :!cscope -b -q -k -R .<CR>
 
 " F10: Open vimrc
 map <F10> :e ~/.vim/vimrc<CR>
 
-" F11: Toggle gull screen gvim
+" F11: Toggle full screen gvim
 map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
 " F12: Source vimrc
@@ -386,24 +535,24 @@ let g:miniBufExplBuffersNeeded=1
 let g:miniBufExplorerAutoStart=0
 
 "easygrep plugin settings
-let g:EasyGrepCommand=1
-let g:EasyGrepWindowPosition="belowright"
-let g:EasyGrepJumpToMatch=0
-let g:EasyGrepFileAssociationsInExplorer=1
-let g:EasyGrepRecursive=1
-let g:EasyGrepMode=3
-let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py CMakeLists.txt *.asm"
-let g:EasyGrepSearchCurrentBufferDir=0
-let g:EasyGrepAllOptionsInExplorer=1
-let g:EasyGrepWindow=1
+"let g:EasyGrepCommand=1
+"let g:EasyGrepWindowPosition="belowright"
+"let g:EasyGrepJumpToMatch=0
+"let g:EasyGrepFileAssociationsInExplorer=1
+"let g:EasyGrepRecursive=1
+"let g:EasyGrepMode=3
+"let g:EasyGrepDefaultUserPattern="*.c *.h *.cpp *.hpp *.cxx *.hxx *.cc *.hh *.c++ *.inl *.inc *.py CMakeLists.txt *.asm"
+"let g:EasyGrepSearchCurrentBufferDir=0
+"let g:EasyGrepAllOptionsInExplorer=1
+"let g:EasyGrepWindow=1
 "Include hidden files to fix bug with ack, shouldn't matter since file
 "extenstions are listed above
-let g:EasyGrepHidden=1
-let g:EasyGrepFilesToExclude="external"
+"let g:EasyGrepHidden=1
+"let g:EasyGrepFilesToExclude="external"
 
 "sidemenu plugin settings
-nmap <Leader>l <Plug>(sidemenu)
-xmap <Leader>l <Plug>(sidemenu-visual)
+"nmap <Leader>l <Plug>(sidemenu)
+"xmap <Leader>l <Plug>(sidemenu-visual)
 
 "choosewin plugin settings
 nmap - <Plug>(choosewin)
@@ -412,7 +561,8 @@ nmap - <Plug>(choosewin)
 let g:plug_window = 'vertical botright new'
 
 "gutentags plugin settings
-let g:gutentags_modules = ['ctags', 'gtags_cscope']
+"let g:gutentags_modules = ['ctags', 'gtags_cscope']
+let g:gutentags_modules = ['ctags']
 
 "undotree plugin settings
 let g:undotree_CustomUndotreeCmd = 'botright vertical 32 new'
@@ -444,10 +594,15 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_key_detailed_diagnostics = '<leader>a'
 let g:ycm_extra_confg_globlist = ['~/Projects/*','~!/*']
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_key_list_select_completion = ['<C-Down>']
+let g:ycm_key_list_previous_completion = ['<C-Up>']
+let g:ycm_auto_hover = ''
+"let g:ycm_key_list_select_completion = ['<TAB>']
+"let g:ycm_key_list_previous_completion = ['<S-TAB>']
 "let g:ycm_key_list_stop_completion = ['<Down>', '<Up>']
 "let g:SuperTabDefaultCompletionType = '<C-n>'
+inoremap <expr> <Down>  pumvisible() ? "\<C-E>\<C-O>j" : "\<Down>"
+inoremap <expr> <Up>    pumvisible() ? "\<C-E>\<C-O>k" : "\<Up>"
 
 "UltiSnip settings
 let g:UltiSnipsExpandTrigger = "<TAB>"
@@ -471,10 +626,10 @@ nmap <Leader>s <Plug>(easymotion-overwin-f)
 nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
 "vimtext settings
-let g:polyglot_disabled = ['latex']
 let g:vimtex_matchparen_enabled = 0
 
 "ale settings
+"let g:ale_linters = {'c':['ccls'], 'cpp':['ccls']}
 let g:ale_linters = {'c':[], 'cpp':[]}
 let g:ale_python_pylint_executable = 'python3'
 let g:ale_python_pylint_options = '-m pylint'
@@ -483,6 +638,15 @@ let g:ale_python_pylint_use_global = 0
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_completion_enabled = 0
+"let g:ale_hover_to_preview = 0
+"let g:ale_hover_cursor = 0
+"let g:ale_set_baloons = 0
+"let g:ale_cpp_ccls_init_options = {
+            "\ 'cache': {
+            "\   'directory': '/tmp/ccls/cache'
+            "\ } 
+            "\}
 
 "Ferret settings
 nmap <leader>x <Plug>(FerretAck)
@@ -493,13 +657,289 @@ let g:FerretExecutableArguments = {
       \   'rg': '--vimgrep --no-heading --max-columns 4096'
       \ }
 
+"Base16 Settings
 function! s:base16_customize() abort
   call Base16hi("MatchParen", g:base16_gui01, "608580", g:base16_cterm05, g:base16_cterm03, "bold", "")
   call Base16hi("Search", g:base16_gui01, g:base16_gui0C, g:base16_cterm05, g:base16_cterm03, "", "")
-  "call Base16hi("Visual", g:base16_gui01, g:base16_gui0D, "", g:base16_cterm0A, "", "")
+  call Base16hi("Visual", g:base16_gui01, g:base16_gui0D, "", g:base16_cterm0A, "", "")
 endfunction
 
 augroup on_change_colorschema
   autocmd!
   autocmd ColorScheme * call s:base16_customize()
 augroup END
+
+"vim-slime settings
+let g:slime_target = 'vimterminal'
+let g:slime_vimterminal_cmd = 'bash'
+
+function! MyExecute()
+    if exists('g:my_execute_command1')
+        :execute 'SlimeSend1 '.expand(g:my_execute_command1)
+    endif
+    if exists('g:my_execute_command2')
+        :execute 'SlimeSend1 '.expand(g:my_execute_command2)
+    endif
+endfunction
+"nmap <Leader>; :call MyExecute()<CR>
+
+"vim-searchhi settings
+let g:searchhi_clear_all_autocmds = 'InsertEnter'
+let g:searchhi_update_all_autocmds = 'InsertLeave'
+map z* <Plug>(asterisk-z*)<Plug>(searchhi-update)
+map z# <Plug>(asterisk-z#)<Plug>(searchhi-update)
+map gz* <Plug>(asterisk-gz*)<Plug>(searchhi-update)
+map gz# <Plug>(asterisk-gz#)<Plug>(searchhi-update)
+
+"vim-searchlight settings
+highlight link Searchlight Incsearch
+
+"vimspector settings
+"let g:vimspector_enable_mappings = 'HUMAN'
+
+"nmap <F5> <Plug>VimspectorContinue
+"nmap <F3> <Plug>VimspectorStop
+"nmap <F4> <Plug>VimspectorRestart
+""nmap <F6> <Plug>VimspectorPause
+"nmap <F9> <Plug>VimspectorToggleBreakpoint
+"nmap <Leader><F9> <Plug>VimspectorToggleConditionalBreakpoint
+"nmap <F8> <Plug>VimspectorAddFunctionBreakpoint
+"nmap <F10> <Plug>VimspectorStepOver
+"nmap <F7> <Plug>VimspectorStepInto
+"nmap <F12> <Plug>VimspectorStepOut
+"let g:vimspector_sign_priority = {
+  "\    'vimspectorPC':         999,
+  "\    'vimspectorBP':         998,
+  "\    'vimspectorBPCond':     997,
+  "\    'vimspectorBPDisabled': 996,
+  "\ }
+
+"vim-which-key settings
+"let g:mapleader = "\\"
+"let g:maplocalleader = ','
+"nnoremap <silent> <leader>      :<c-u>WhichKey '\\'<CR>
+"nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+"vim-leader-guide settings
+"call leaderGuide#register_prefix_descriptions("\\", "g:lmap")
+"nnoremap <silent> <leader> :<c-u>LeaderGuide '\\'<CR>
+"vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '\\'<CR>
+
+"DoxygenToolkit settings
+:nnoremap <Leader>m :Dox<CR>
+
+"Coc settings
+" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+"set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+"if has("nvim-0.5.0") || has("patch-8.1.1564")
+  "" Recently vim can merge signcolumn and number column into one
+  "set signcolumn=number
+"else
+  "set signcolumn=yes
+"endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add `:Caller` command to show incoming call hierarchy
+command! -nargs=0 Caller :call CocAction('showIncomingCalls')
+
+" Add `:Callee` command to show outgoing call hierarchy
+command! -nargs=0 Callee :call CocAction('showOutgoingCalls')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+"nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent><nowait> <space>o :<C-u>CocOutline<cr>
+"use tagbar instead for better UI
+
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+"unmap unused plugin key mappings
+"n  \bv         & :BufExplorerVerticalSplit<CR>
+au VimEnter * unmap <leader>bv
+"n  \bs         & :BufExplorerHorizontalSplit<CR>
+au VimEnter * unmap <leader>bs
+"n  \bt         & :ToggleBufExplorer<CR>
+au VimEnter * unmap <leader>bt
+"n  \ca           <Plug>NERDCommenterAltDelims
+au VimEnter * unmap <leader>ca
+"x  \cu           <Plug>NERDCommenterUncomment
+"n  \cu           <Plug>NERDCommenterUncomment
+au VimEnter * unmap <leader>cu
+"x  \cb           <Plug>NERDCommenterAlignBoth
+au VimEnter * unmap <leader>cb
+"n  \cb           <Plug>NERDCommenterAlignBoth
+"x  \cl           <Plug>NERDCommenterAlignLeft
+au VimEnter * unmap <leader>cl
+"n  \cl           <Plug>NERDCommenterAlignLeft
+"n  \cA           <Plug>NERDCommenterAppend
+au VimEnter * unmap <leader>cA
+"x  \cy           <Plug>NERDCommenterYank
+au VimEnter * unmap <leader>cy
+"n  \cy           <Plug>NERDCommenterYank
+"au VimEnter * unmap <leader>cy
+"x  \cs           <Plug>NERDCommenterSexy
+au VimEnter * unmap <leader>cs
+"n  \cs           <Plug>NERDCommenterSexy
+"au VimEnter * unmap <leader>cs
+"n  \ci           <Plug>NERDCommenterInvert
+au VimEnter * unmap <leader>ci
+"n  \c$           <Plug>NERDCommenterToEOL
+au VimEnter * unmap <leader>c$
+"x  \cn           <Plug>NERDCommenterNested
+au VimEnter * unmap <leader>cn
+"n  \cn           <Plug>NERDCommenterNested
+"x  \cm           <Plug>NERDCommenterMinimal
+au VimEnter * unmap <leader>cm
+"n  \cm           <Plug>NERDCommenterMinimal
